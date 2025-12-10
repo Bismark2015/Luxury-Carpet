@@ -1,0 +1,72 @@
+{
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Akua Mensah",
+      "location": "East Legon, Accra",
+      "rating": 5,
+      "text": "Best carpet shop in Accra! The quality is amazing and the customer service is excellent. Highly recommend!",
+      "product": "3D Center Carpet",
+      "date": "2024-01-15",
+      "avatar": "AM",
+      "verified": true
+    },
+    {
+      "id": 2,
+      "name": "Kwame Asante",
+      "location": "Osu, Accra",
+      "rating": 5,
+      "text": "I bought 3 carpets from Luxury Carpet and they transformed my home completely. Very soft and beautiful designs!",
+      "product": "Fluffy Comfort",
+      "date": "2024-01-10",
+      "avatar": "KA",
+      "verified": true
+    },
+    {
+      "id": 3,
+      "name": "Ama Darko",
+      "location": "Tema",
+      "rating": 5,
+      "text": "Fast delivery and affordable prices. The fluffy carpet is perfect for my bedroom. Will definitely buy again!",
+      "product": "Fluffy Luxe",
+      "date": "2024-01-05",
+      "avatar": "AD",
+      "verified": true
+    },
+    {
+      "id": 4,
+      "name": "Yaw Boateng",
+      "location": "Kumasi",
+      "rating": 5,
+      "text": "The 3D carpet exceeded my expectations. It looks exactly like the pictures and feels premium. Great value for money!",
+      "product": "3D Premium Collection",
+      "date": "2023-12-28",
+      "avatar": "YB",
+      "verified": true
+    },
+    {
+      "id": 5,
+      "name": "Esi Ofori",
+      "location": "Cape Coast",
+      "rating": 4,
+      "text": "Very professional service and quality products. The delivery was faster than expected. Will recommend to friends!",
+      "product": "3D Luxury Design",
+      "date": "2023-12-20",
+      "avatar": "EO",
+      "verified": true
+    },
+    {
+      "id": 6,
+      "name": "Kofi Ansah",
+      "location": "Takoradi",
+      "rating": 5,
+      "text": "Ordered for my office and received compliments from everyone. The carpet is durable and easy to clean. Excellent!",
+      "product": "3D Geometric Design",
+      "date": "2023-12-15",
+      "avatar": "KA",
+      "verified": true
+    }
+  ],
+  "averageRating": 4.8,
+  "totalTestimonials": 6
+}
