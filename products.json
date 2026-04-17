@@ -841,7 +841,7 @@
       "stock": 10,
       "colors": ["#ADD8E6", "#87CEEB", "#B0E0E6"],
       "badges": ["bestseller", "fluffy"],
-      "image": "assets/images/fluffy/fluffy29.jpg"
+      "image": "assets/images/fluffy/fluffy21.jpg"
     },
     {
       "id": 60,
@@ -869,7 +869,7 @@
       "stock": 21,
       "colors": ["#F5F5F5", "#F0F0F0", "#E8E8E8"],
       "badges": ["fluffy", "luxury"],
-      "image": "assets/images/fluffy/fluffy30.jpg"
+      "image": "assets/images/fluffy/fluffy7.jpg"
     },
     {
       "id": 62,
@@ -897,7 +897,7 @@
       "stock": 35,
       "colors": ["#F0FFF0", "#F5FFFA", "#F0F8FF"],
       "badges": ["fluffy", "fresh"],
-      "image": "assets/images/fluffy/fluffy31.jpg"
+      "image": "assets/images/fluffy/fluffy1.jpg"
     },
     {
       "id": 64,
@@ -925,7 +925,7 @@
       "stock": 11,
       "colors": ["#FFFFFF", "#F8F8FF", "#F0F8FF"],
       "badges": ["fluffy", "heavenly"],
-      "image": "assets/images/fluffy/fluffy32.jpg"
+      "image": "assets/images/fluffy/fluffy20.jpg"
     },
     {
       "id": 66,
@@ -953,7 +953,7 @@
       "stock": 22,
       "colors": ["#F5F5DC", "#FAFAD2", "#FFFACD"],
       "badges": ["fluffy", "luxury"],
-      "image": "assets/images/fluffy/fluffy33.jpg"
+      "image": "assets/images/fluffy/fluffy11.jpg"
     },
     {
       "id": 68,
@@ -981,7 +981,7 @@
       "stock": 37,
       "colors": ["#FFF8DC", "#FAFAD2", "#FFFACD"],
       "badges": ["fluffy", "soft"],
-      "image": "assets/images/fluffy/fluffy34.jpg"
+      "image": "assets/images/fluffy/fluffy3.jpg"
     },
     {
       "id": 70,
@@ -1009,7 +1009,7 @@
       "stock": 12,
       "colors": ["#F0F8FF", "#E6F3FF", "#CCE6FF"],
       "badges": ["bestseller", "fluffy"],
-      "image": "assets/images/fluffy/fluffy35.jpg"
+      "image": "assets/images/fluffy/fluffy17.jpg"
     },
     {
       "id": 72,
@@ -1037,7 +1037,7 @@
       "stock": 23,
       "colors": ["#FFE4E1", "#FFDAB9", "#FFE4B5"],
       "badges": ["fluffy", "silk"],
-      "image": "assets/images/fluffy/fluffy36.jpg"
+      "image": "assets/images/fluffy/fluffy8.jpg"
     },
     {
       "id": 74,
@@ -1065,7 +1065,7 @@
       "stock": 39,
       "colors": ["#F0F8FF", "#F8F8FF", "#F5F5F5"],
       "badges": ["fluffy", "soft"],
-      "image": "assets/images/fluffy/fluffy37.jpg"
+      "image": "assets/images/fluffy/fluffy12.jpg"
     },
     {
       "id": 76,
@@ -1093,7 +1093,7 @@
       "stock": 13,
       "colors": ["#F0F8FF", "#E6F3FF", "#CCE6FF"],
       "badges": ["fluffy", "glow"],
-      "image": "assets/images/fluffy/fluffy38.jpg"
+      "image": "assets/images/fluffy/fluffy13.jpg"
     },
     {
       "id": 78,
@@ -1121,7 +1121,7 @@
       "stock": 24,
       "colors": ["#800080", "#9370DB", "#DDA0DD"],
       "badges": ["fluffy", "velvet"],
-      "image": "assets/images/fluffy/fluffy39.jpg"
+      "image": "assets/images/fluffy/fluffy14.jpg"
     },
     {
       "id": 80,
@@ -1149,7 +1149,7 @@
       "stock": 41,
       "colors": ["#FFFFFF", "#F5F5F5", "#E8E8E8"],
       "badges": ["fluffy", "cloud"],
-      "image": "assets/images/fluffy/fluffy40.jpg"
+      "image": "assets/images/fluffy/fluffy10.jpg"
     },
     {
       "id": 82,
@@ -1177,7 +1177,7 @@
       "stock": 14,
       "colors": ["#F0F8FF", "#E6F3FF", "#CCE6FF"],
       "badges": ["fluffy", "silk"],
-      "image": "assets/images/fluffy/fluffy41.jpg"
+      "image": "assets/images/fluffy/fluffy16.jpg"
     },
     {
       "id": 84,
@@ -1205,7 +1205,7 @@
       "stock": 25,
       "colors": ["#F5F5F5", "#F0F0F0", "#E8E8E8"],
       "badges": ["fluffy", "luxury"],
-      "image": "assets/images/fluffy/fluffy42.jpg"
+      "image": "assets/images/fluffy/fluffy2.jpg"
     },
     {
       "id": 86,
@@ -1233,7 +1233,7 @@
       "stock": 43,
       "colors": ["#F0F8FF", "#E6F3FF", "#CCE6FF"],
       "badges": ["fluffy", "cloud"],
-      "image": "assets/images/fluffy/fluffy43.jpg"
+      "image": "assets/images/fluffy/fluffy19.jpg"
     },
     {
       "id": 88,
@@ -1261,7 +1261,7 @@
       "stock": 15,
       "colors": ["#C0C0C0", "#D3D3D3", "#F5F5F5"],
       "badges": ["fluffy", "moon"],
-      "image": "assets/images/fluffy/fluffy44.jpg"
+      "image": "assets/images/fluffy/fluffy20.jpg"
     },
     {
       "id": 90,
@@ -1289,7 +1289,7 @@
       "stock": 26,
       "colors": ["#1E90FF", "#00BFFF", "#87CEEB"],
       "badges": ["fluffy", "silk"],
-      "image": "assets/images/fluffy/fluffy45.jpg"
+      "image": "assets/images/fluffy/fluffy14.jpg"
     },
     {
       "id": 92,
@@ -1317,7 +1317,7 @@
       "stock": 45,
       "colors": ["#000080", "#191970", "#00008B"],
       "badges": ["fluffy", "stars"],
-      "image": "assets/images/fluffy/fluffy46.jpg"
+      "image": "assets/images/fluffy/fluffy18.jpg"
     },
     {
       "id": 94,
@@ -1345,7 +1345,7 @@
       "stock": 16,
       "colors": ["#FFD700", "#FFEC8B", "#FFFACD"],
       "badges": ["bestseller", "fluffy"],
-      "image": "assets/images/fluffy/fluffy47.jpg"
+      "image": "assets/images/fluffy/fluffy10.jpg"
     },
     {
       "id": 96,
@@ -1373,7 +1373,7 @@
       "stock": 27,
       "colors": ["#87CEEB", "#B0E0E6", "#ADD8E6"],
       "badges": ["fluffy", "velvet"],
-      "image": "assets/images/fluffy/fluffy48.jpg"
+      "image": "assets/images/fluffy/fluffy19.jpg"
     },
     {
       "id": 98,
@@ -1401,7 +1401,7 @@
       "stock": 47,
       "colors": ["#FFFFFF", "#F5F5F5", "#E8E8E8"],
       "badges": ["fluffy", "cloud"],
-      "image": "assets/images/fluffy/fluffy49.jpg"
+      "image": "assets/images/fluffy/fluffy6.jpg"
     },
     {
       "id": 100,
