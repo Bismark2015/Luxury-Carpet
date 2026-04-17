@@ -1,951 +1,1076 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Luxury Carpet - Premium 3D & Fluffy Carpets in Ghana">
-    <meta name="keywords" content="3D carpets Ghana, fluffy carpets, luxury carpets Accra, home décor carpets, carpets Ghana">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Luxury Carpet - Premium 3D & Fluffy Carpets in Ghana"
+    />
+    <meta
+      name="keywords"
+      content="3D carpets Ghana, fluffy carpets, luxury carpets Accra, home décor carpets, carpets Ghana"
+    />
     <title>Luxury Carpet | Premium 3D & Fluffy Carpets</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
     <style>
-        /* Sliding Testimonials Styles */
-        .testimonials-slider-section {
-            padding: 80px 0;
-            background: #f8f9fa;
-            position: relative;
-            overflow: hidden;
+      /* Sliding Testimonials Styles */
+      .testimonials-slider-section {
+        padding: 80px 0;
+        background: #f8f9fa;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .testimonials-slider-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        position: relative;
+      }
+
+      .testimonials-track {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        gap: 30px;
+      }
+
+      .testimonial-slide {
+        min-width: 100%;
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      .testimonial-card-slider {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+        border-left: 5px solid #667eea;
+      }
+
+      .testimonial-rating {
+        color: #ffd700;
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      .testimonial-text-slider {
+        font-size: 18px;
+        line-height: 1.8;
+        color: #333;
+        margin-bottom: 30px;
+        font-style: italic;
+        position: relative;
+        padding-left: 30px;
+      }
+
+      .testimonial-text-slider:before {
+        content: '"';
+        font-size: 80px;
+        color: #667eea;
+        opacity: 0.2;
+        position: absolute;
+        left: -10px;
+        top: -30px;
+        font-family: Georgia, serif;
+      }
+
+      .testimonial-author-slider {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+      }
+
+      .testimonial-avatar-slider {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+      }
+
+      .testimonial-author-info-slider h4 {
+        margin: 0 0 5px 0;
+        font-size: 18px;
+        color: #333;
+      }
+
+      .testimonial-location-slider {
+        color: #666;
+        font-size: 14px;
+      }
+
+      .testimonial-product-slider {
+        margin-top: 10px;
+        font-size: 14px;
+        color: #667eea;
+        font-weight: 500;
+      }
+
+      /* Slider Controls */
+      .testimonial-controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .testimonial-prev,
+      .testimonial-next {
+        background: white;
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        font-size: 18px;
+        color: #667eea;
+      }
+
+      .testimonial-prev:hover,
+      .testimonial-next:hover {
+        background: #667eea;
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+      }
+
+      .testimonial-dots {
+        display: flex;
+        gap: 10px;
+      }
+
+      .testimonial-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #ddd;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .testimonial-dot.active {
+        background: #667eea;
+        transform: scale(1.3);
+      }
+
+      /* Add Testimonial */
+      .add-testimonial-slider {
+        text-align: center;
+        margin-top: 60px;
+        padding: 40px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      }
+
+      .add-testimonial-slider h3 {
+        color: #333;
+        margin-bottom: 10px;
+        font-size: 24px;
+      }
+
+      .add-testimonial-slider p {
+        color: #666;
+        margin-bottom: 30px;
+        font-size: 16px;
+      }
+
+      /* Slider Animation */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
         }
-        
-        .testimonials-slider-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
-        
-        .testimonials-track {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            gap: 30px;
-        }
-        
-        .testimonial-slide {
-            min-width: 100%;
-            flex-shrink: 0;
-            display: flex;
-            justify-content: center;
-        }
-        
-        .testimonial-card-slider {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            border-left: 5px solid #667eea;
-        }
-        
-        .testimonial-rating {
-            color: #FFD700;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        
-        .testimonial-text-slider {
-            font-size: 18px;
-            line-height: 1.8;
-            color: #333;
-            margin-bottom: 30px;
-            font-style: italic;
-            position: relative;
-            padding-left: 30px;
-        }
-        
-        .testimonial-text-slider:before {
-            content: '"';
-            font-size: 80px;
-            color: #667eea;
-            opacity: 0.2;
-            position: absolute;
-            left: -10px;
-            top: -30px;
-            font-family: Georgia, serif;
-        }
-        
-        .testimonial-author-slider {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-        }
-        
-        .testimonial-avatar-slider {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 20px;
-        }
-        
-        .testimonial-author-info-slider h4 {
-            margin: 0 0 5px 0;
-            font-size: 18px;
-            color: #333;
-        }
-        
-        .testimonial-location-slider {
-            color: #666;
-            font-size: 14px;
-        }
-        
-        .testimonial-product-slider {
-            margin-top: 10px;
-            font-size: 14px;
-            color: #667eea;
-            font-weight: 500;
-        }
-        
-        /* Slider Controls */
-        .testimonial-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .testimonial-prev,
-        .testimonial-next {
-            background: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            font-size: 18px;
-            color: #667eea;
-        }
-        
-        .testimonial-prev:hover,
-        .testimonial-next:hover {
-            background: #667eea;
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-        }
-        
-        .testimonial-dots {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .testimonial-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #ddd;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .testimonial-dot.active {
-            background: #667eea;
-            transform: scale(1.3);
-        }
-        
-        /* Add Testimonial */
-        .add-testimonial-slider {
-            text-align: center;
-            margin-top: 60px;
-            padding: 40px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-        
-        .add-testimonial-slider h3 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 24px;
-        }
-        
-        .add-testimonial-slider p {
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 16px;
-        }
-        
-        /* Slider Animation */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .testimonial-card-slider {
-            animation: fadeIn 0.5s ease-out;
-        }
+      }
+
+      .testimonial-card-slider {
+        animation: fadeIn 0.5s ease-out;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Loading Screen -->
     <div class="loader-wrapper" id="loader">
-        <div class="loader">
-            <div class="carpet-spinner"></div>
-            <p>Loading Luxury Carpet...</p>
-        </div>
+      <div class="loader">
+        <div class="carpet-spinner"></div>
+        <p>Loading Luxury Carpet...</p>
+      </div>
     </div>
 
     <!-- Header -->
     <header class="header">
-        <nav class="nav container">
-            <div class="logo">
-                <div>
-                    <h1 class="logo-text">LUXURY <span>CARPET</span></h1>
-                    <p class="logo-subtext">Premium Elegance</p>
-                </div>
-            </div>
-            
-            <div class="nav-menu" id="navMenu">
-                <a href="#home" class="nav-link active">
-                    <i class="fas fa-home"></i> Home
-                </a>
-                <a href="#products" class="nav-link">
-                    <i class="fas fa-th-large"></i> Products
-                </a>
-                <a href="#about" class="nav-link">
-                    <i class="fas fa-info-circle"></i> About
-                </a>
-                <a href="#contact" class="nav-link">
-                    <i class="fas fa-envelope"></i> Contact
-                </a>
-                <div class="whatsapp-mobile">
-                    <a href="https://wa.me/233263405722" target="_blank" class="whatsapp-btn-mobile">
-                        <i class="fab fa-whatsapp"></i> Order Now
-                    </a>
-                </div>
-            </div>
+      <nav class="nav container">
+        <div class="logo">
+          <div>
+            <h1 class="logo-text">LUXURY <span>CARPET</span></h1>
+            <p class="logo-subtext">Premium Elegance</p>
+          </div>
+        </div>
 
-            <div class="nav-actions">
-                <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="Search carpets...">
-                    <i class="fas fa-search"></i>
-                </div>
-                <div class="header-whatsapp">
-                    <a href="https://wa.me/233263405722" target="_blank" class="whatsapp-header">
-                        <i class="fab fa-whatsapp"></i> <span>0263405722</span>
-                    </a>
-                </div>
-                <button class="menu-toggle" id="menuToggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </nav>
+        <div class="nav-menu" id="navMenu">
+          <a href="#home" class="nav-link active">
+            <i class="fas fa-home"></i> Home
+          </a>
+          <a href="#products" class="nav-link">
+            <i class="fas fa-th-large"></i> Products
+          </a>
+          <a href="#about" class="nav-link">
+            <i class="fas fa-info-circle"></i> About
+          </a>
+          <a href="#contact" class="nav-link">
+            <i class="fas fa-envelope"></i> Contact
+          </a>
+          <div class="whatsapp-mobile">
+            <a
+              href="https://wa.me/233263405722"
+              target="_blank"
+              class="whatsapp-btn-mobile"
+            >
+              <i class="fab fa-whatsapp"></i> Order Now
+            </a>
+          </div>
+        </div>
+
+        <div class="nav-actions">
+          <div class="search-box">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search carpets..."
+            />
+            <i class="fas fa-search"></i>
+          </div>
+          <div class="header-whatsapp">
+            <a
+              href="https://wa.me/233263405722"
+              target="_blank"
+              class="whatsapp-header"
+            >
+              <i class="fab fa-whatsapp"></i> <span>0263405722</span>
+            </a>
+          </div>
+          <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-overlay"></div>
-        <div class="hero-content container">
-            <div class="hero-text">
-                <h2 class="hero-title">Transform Your Home with <span>Elegant Carpets</span></h2>
-                <p class="hero-description">Discover our premium collection of 3D & Fluffy carpets that bring comfort, style, and luxury to every space.</p>
-                <div class="hero-buttons">
-                    <a href="#products" class="btn btn-primary">
-                        <i class="fas fa-shopping-bag"></i> Shop Collection
-                    </a>
-                    <a href="https://wa.me/233263405722?text=Hi%20Luxury%20Carpet%2C%20I'm%20interested%20in%20your%20carpets" 
-                       target="_blank" class="btn btn-whatsapp">
-                        <i class="fab fa-whatsapp"></i> WhatsApp Order
-                    </a>
-                </div>
-                <div class="hero-features">
-                    <div class="feature">
-                        <i class="fas fa-shipping-fast"></i>
-                        <span>1-Hour Delivery</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-award"></i>
-                        <span>Premium Quality</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-tag"></i>
-                        <span>Best Prices</span>
-                    </div>
-                </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content container">
+        <div class="hero-text">
+          <h2 class="hero-title">
+            Transform Your Home with <span>Elegant Carpets</span>
+          </h2>
+          <p class="hero-description">
+            Discover our premium collection of 3D & Fluffy carpets that bring
+            comfort, style, and luxury to every space.
+          </p>
+          <div class="hero-buttons">
+            <a href="#products" class="btn btn-primary">
+              <i class="fas fa-shopping-bag"></i> Shop Collection
+            </a>
+            <a
+              href="https://wa.me/233263405722?text=Hi%20Luxury%20Carpet%2C%20I'm%20interested%20in%20your%20carpets"
+              target="_blank"
+              class="btn btn-whatsapp"
+            >
+              <i class="fab fa-whatsapp"></i> WhatsApp Order
+            </a>
+          </div>
+          <div class="hero-features">
+            <div class="feature">
+              <i class="fas fa-shipping-fast"></i>
+              <span>1-Hour Delivery</span>
             </div>
+            <div class="feature">
+              <i class="fas fa-award"></i>
+              <span>Premium Quality</span>
+            </div>
+            <div class="feature">
+              <i class="fas fa-tag"></i>
+              <span>Best Prices</span>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Category Filter -->
     <section class="category-filter">
-        <div class="container">
-            <div class="filter-title">
-                <h3>Browse Our Collections</h3>
-                <p>Find the perfect carpet for your space</p>
-            </div>
-            <div class="filter-buttons" id="filterButtons">
-                <!-- Filters loaded from JavaScript -->
-            </div>
+      <div class="container">
+        <div class="filter-title">
+          <h3>Browse Our Collections</h3>
+          <p>Find the perfect carpet for your space</p>
         </div>
+        <div class="filter-buttons" id="filterButtons">
+          <!-- Filters loaded from JavaScript -->
+        </div>
+      </div>
     </section>
 
     <!-- Products Section -->
     <section class="products-section" id="products">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Our Premium Collection</h2>
-                <p class="section-subtitle">Handpicked carpets that transform spaces</p>
-            </div>
-            
-            <div class="products-controls">
-                <div class="products-count">
-                    Showing <span id="productsCount">40</span> premium carpets
-                </div>
-                <div class="sort-by">
-                    <label for="sortSelect">Sort by:</label>
-                    <select id="sortSelect">
-                        <option value="featured">Featured</option>
-                        <option value="price-low">Price: Low to High</option>
-                        <option value="price-high">Price: High to Low</option>
-                        <option value="popular">Most Popular</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="products-grid" id="productsGrid">
-                <!-- Products loaded from JavaScript -->
-            </div>
-
-            <div class="products-empty" id="productsEmpty" style="display: none;">
-                <i class="fas fa-search"></i>
-                <h3>No carpets found</h3>
-                <p>Try adjusting your search or filter</p>
-                <button class="btn btn-secondary" onclick="resetFilters()">Reset Filters</button>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Our Premium Collection</h2>
+          <p class="section-subtitle">
+            Handpicked carpets that transform spaces
+          </p>
         </div>
+
+        <div class="products-controls">
+          <div class="products-count">
+            Showing <span id="productsCount">40</span> premium carpets
+          </div>
+          <div class="sort-by">
+            <label for="sortSelect">Sort by:</label>
+            <select id="sortSelect">
+              <option value="featured">Featured</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="popular">Most Popular</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="products-grid" id="productsGrid">
+          <!-- Products loaded from JavaScript -->
+        </div>
+
+        <div class="products-empty" id="productsEmpty" style="display: none">
+          <i class="fas fa-search"></i>
+          <h3>No carpets found</h3>
+          <p>Try adjusting your search or filter</p>
+          <button class="btn btn-secondary" onclick="resetFilters()">
+            Reset Filters
+          </button>
+        </div>
+      </div>
     </section>
 
     <!-- Quick View Modal -->
     <div class="modal-overlay" id="quickViewModal">
-        <div class="modal-content">
-            <button class="modal-close" id="modalClose">&times;</button>
-            <div class="modal-body" id="modalBody">
-                <!-- Modal content loaded here -->
-            </div>
+      <div class="modal-content">
+        <button class="modal-close" id="modalClose">&times;</button>
+        <div class="modal-body" id="modalBody">
+          <!-- Modal content loaded here -->
         </div>
+      </div>
     </div>
 
     <!-- Features Section -->
     <section class="features-section">
-        <div class="container">
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-truck"></i>
-                    </div>
-                    <h3>Fast Delivery</h3>
-                    <p>We deliver to all areas in Accra within 1 hour. Nationwide delivery available.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Quality Guarantee</h3>
-                    <p>All our carpets are made from premium materials with 1-year quality guarantee.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-credit-card"></i>
-                    </div>
-                    <h3>Easy Payment</h3>
-                    <p>Pay with Mobile Money, Cash, or Bank Transfer. Secure and convenient.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-undo"></i>
-                    </div>
-                    <h3>Easy Returns</h3>
-                    <p>Not satisfied? Return within 7 days for a full refund or exchange.</p>
-                </div>
+      <div class="container">
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-truck"></i>
             </div>
+            <h3>Fast Delivery</h3>
+            <p>
+              We deliver to all areas in Accra within 1 hour. Nationwide
+              delivery available.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3>Quality Guarantee</h3>
+            <p>
+              All our carpets are made from premium materials with 1-year
+              quality guarantee.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-credit-card"></i>
+            </div>
+            <h3>Easy Payment</h3>
+            <p>
+              Pay with Mobile Money, Cash, or Bank Transfer. Secure and
+              convenient.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-undo"></i>
+            </div>
+            <h3>Easy Returns</h3>
+            <p>
+              Not satisfied? Return within 7 days for a full refund or exchange.
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Sliding Testimonials Section -->
     <section class="testimonials-slider-section" id="testimonials">
-        <div class="testimonials-slider-container">
-            <div class="section-header" style="text-align: center; margin-bottom: 50px;">
-                <h2 class="section-title">What Our Customers Say</h2>
-                <p class="section-subtitle">Real feedback from happy customers across Ghana</p>
-            </div>
-            
-            <div class="testimonials-slider" id="testimonialsSlider">
-                <div class="testimonials-track" id="testimonialTrack">
-                    <!-- Slide 1 -->
-                    <div class="testimonial-slide">
-                        <div class="testimonial-card-slider">
-                            <div class="testimonial-rating">
-                                ★★★★★
-                            </div>
-                            <p class="testimonial-text-slider">
-                                "Absolutely love my 3D carpet from Luxury Carpet! The quality exceeded my expectations and transformed my living room completely. Delivery was super fast - within 1 hour as promised!"
-                            </p>
-                            <div class="testimonial-author-slider">
-                                <div class="testimonial-avatar-slider">AD</div>
-                                <div class="testimonial-author-info-slider">
-                                    <h4>Ama Darko</h4>
-                                    <div class="testimonial-location-slider">
-                                        <i class="fas fa-map-marker-alt"></i> East Legon, Accra
-                                    </div>
-                                    <div class="testimonial-product-slider">
-                                        Purchased: 3D Geometric Carpet
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Slide 2 -->
-                    <div class="testimonial-slide">
-                        <div class="testimonial-card-slider">
-                            <div class="testimonial-rating">
-                                ★★★★★
-                            </div>
-                            <p class="testimonial-text-slider">
-                                "Best carpet shop in Ghana! The fluffy carpet feels like walking on clouds. Customer service was excellent throughout - helped me choose the perfect size for my bedroom."
-                            </p>
-                            <div class="testimonial-author-slider">
-                                <div class="testimonial-avatar-slider">KO</div>
-                                <div class="testimonial-author-info-slider">
-                                    <h4>Kwame Osei</h4>
-                                    <div class="testimonial-location-slider">
-                                        <i class="fas fa-map-marker-alt"></i> Kumasi
-                                    </div>
-                                    <div class="testimonial-product-slider">
-                                        Purchased: Fluffy Grey Carpet
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Slide 3 -->
-                    <div class="testimonial-slide">
-                        <div class="testimonial-card-slider">
-                            <div class="testimonial-rating">
-                                ★★★★☆
-                            </div>
-                            <p class="testimonial-text-slider">
-                                "Very happy with my purchase. The 3D effect is stunning and gets compliments from everyone who visits. Will definitely buy again for my office space!"
-                            </p>
-                            <div class="testimonial-author-slider">
-                                <div class="testimonial-avatar-slider">EB</div>
-                                <div class="testimonial-author-info-slider">
-                                    <h4>Esi Boateng</h4>
-                                    <div class="testimonial-location-slider">
-                                        <i class="fas fa-map-marker-alt"></i> Tema
-                                    </div>
-                                    <div class="testimonial-product-slider">
-                                        Purchased: 3D Diamond Carpet
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Slide 4 -->
-                    <div class="testimonial-slide">
-                        <div class="testimonial-card-slider">
-                            <div class="testimonial-rating">
-                                ★★★★★
-                            </div>
-                            <p class="testimonial-text-slider">
-                                "Quality is outstanding! The carpet is durable, easy to clean, and looks exactly like the pictures. Great value for money compared to other shops in Accra."
-                            </p>
-                            <div class="testimonial-author-slider">
-                                <div class="testimonial-avatar-slider">YO</div>
-                                <div class="testimonial-author-info-slider">
-                                    <h4>Yaw Ofori</h4>
-                                    <div class="testimonial-location-slider">
-                                        <i class="fas fa-map-marker-alt"></i> Cape Coast
-                                    </div>
-                                    <div class="testimonial-product-slider">
-                                        Purchased: Fluffy White Carpet
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Slide 5 -->
-                    <div class="testimonial-slide">
-                        <div class="testimonial-card-slider">
-                            <div class="testimonial-rating">
-                                ★★★★★
-                            </div>
-                            <p class="testimonial-text-slider">
-                                "Ordered 3 carpets for my office and they all arrived perfectly. Professional service from start to finish. Highly recommended for anyone looking for premium carpets!"
-                            </p>
-                            <div class="testimonial-author-slider">
-                                <div class="testimonial-avatar-slider">KA</div>
-                                <div class="testimonial-author-info-slider">
-                                    <h4>Kwame Asante</h4>
-                                    <div class="testimonial-location-slider">
-                                        <i class="fas fa-map-marker-alt"></i> Osu, Accra
-                                    </div>
-                                    <div class="testimonial-product-slider">
-                                        Purchased: 3D Premium Collection
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="testimonial-controls">
-                <button class="testimonial-prev" id="testimonialPrev">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <div class="testimonial-dots" id="testimonialDots">
-                    <span class="testimonial-dot active" data-index="0"></span>
-                    <span class="testimonial-dot" data-index="1"></span>
-                    <span class="testimonial-dot" data-index="2"></span>
-                    <span class="testimonial-dot" data-index="3"></span>
-                    <span class="testimonial-dot" data-index="4"></span>
-                </div>
-                <button class="testimonial-next" id="testimonialNext">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-            
-            <div class="add-testimonial-slider">
-                <h3>Share Your Experience</h3>
-                <p>Bought from Luxury Carpet? Share your story with others!</p>
-                <button class="btn btn-primary" id="openTestimonialForm">
-                    <i class="fas fa-comment"></i> Add Your Testimonial
-                </button>
-            </div>
+      <div class="testimonials-slider-container">
+        <div
+          class="section-header"
+          style="text-align: center; margin-bottom: 50px"
+        >
+          <h2 class="section-title">What Our Customers Say</h2>
+          <p class="section-subtitle">
+            Real feedback from happy customers across Ghana
+          </p>
         </div>
+
+        <div class="testimonials-slider" id="testimonialsSlider">
+          <div class="testimonials-track" id="testimonialTrack">
+            <!-- Slide 1 -->
+            <div class="testimonial-slide">
+              <div class="testimonial-card-slider">
+                <div class="testimonial-rating">★★★★★</div>
+                <p class="testimonial-text-slider">
+                  "Absolutely love my 3D carpet from Luxury Carpet! The quality
+                  exceeded my expectations and transformed my living room
+                  completely. Delivery was super fast - within 1 hour as
+                  promised!"
+                </p>
+                <div class="testimonial-author-slider">
+                  <div class="testimonial-avatar-slider">AD</div>
+                  <div class="testimonial-author-info-slider">
+                    <h4>Ama Darko</h4>
+                    <div class="testimonial-location-slider">
+                      <i class="fas fa-map-marker-alt"></i> East Legon, Accra
+                    </div>
+                    <div class="testimonial-product-slider">
+                      Purchased: 3D Geometric Carpet
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="testimonial-slide">
+              <div class="testimonial-card-slider">
+                <div class="testimonial-rating">★★★★★</div>
+                <p class="testimonial-text-slider">
+                  "Best carpet shop in Ghana! The fluffy carpet feels like
+                  walking on clouds. Customer service was excellent throughout -
+                  helped me choose the perfect size for my bedroom."
+                </p>
+                <div class="testimonial-author-slider">
+                  <div class="testimonial-avatar-slider">KO</div>
+                  <div class="testimonial-author-info-slider">
+                    <h4>Kwame Osei</h4>
+                    <div class="testimonial-location-slider">
+                      <i class="fas fa-map-marker-alt"></i> Kumasi
+                    </div>
+                    <div class="testimonial-product-slider">
+                      Purchased: Fluffy Grey Carpet
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="testimonial-slide">
+              <div class="testimonial-card-slider">
+                <div class="testimonial-rating">★★★★☆</div>
+                <p class="testimonial-text-slider">
+                  "Very happy with my purchase. The 3D effect is stunning and
+                  gets compliments from everyone who visits. Will definitely buy
+                  again for my office space!"
+                </p>
+                <div class="testimonial-author-slider">
+                  <div class="testimonial-avatar-slider">EB</div>
+                  <div class="testimonial-author-info-slider">
+                    <h4>Esi Boateng</h4>
+                    <div class="testimonial-location-slider">
+                      <i class="fas fa-map-marker-alt"></i> Tema
+                    </div>
+                    <div class="testimonial-product-slider">
+                      Purchased: 3D Diamond Carpet
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="testimonial-slide">
+              <div class="testimonial-card-slider">
+                <div class="testimonial-rating">★★★★★</div>
+                <p class="testimonial-text-slider">
+                  "Quality is outstanding! The carpet is durable, easy to clean,
+                  and looks exactly like the pictures. Great value for money
+                  compared to other shops in Accra."
+                </p>
+                <div class="testimonial-author-slider">
+                  <div class="testimonial-avatar-slider">YO</div>
+                  <div class="testimonial-author-info-slider">
+                    <h4>Yaw Ofori</h4>
+                    <div class="testimonial-location-slider">
+                      <i class="fas fa-map-marker-alt"></i> Cape Coast
+                    </div>
+                    <div class="testimonial-product-slider">
+                      Purchased: Fluffy White Carpet
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="testimonial-slide">
+              <div class="testimonial-card-slider">
+                <div class="testimonial-rating">★★★★★</div>
+                <p class="testimonial-text-slider">
+                  "Ordered 3 carpets for my office and they all arrived
+                  perfectly. Professional service from start to finish. Highly
+                  recommended for anyone looking for premium carpets!"
+                </p>
+                <div class="testimonial-author-slider">
+                  <div class="testimonial-avatar-slider">KA</div>
+                  <div class="testimonial-author-info-slider">
+                    <h4>Kwame Asante</h4>
+                    <div class="testimonial-location-slider">
+                      <i class="fas fa-map-marker-alt"></i> Osu, Accra
+                    </div>
+                    <div class="testimonial-product-slider">
+                      Purchased: 3D Premium Collection
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-controls">
+          <button class="testimonial-prev" id="testimonialPrev">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div class="testimonial-dots" id="testimonialDots">
+            <span class="testimonial-dot active" data-index="0"></span>
+            <span class="testimonial-dot" data-index="1"></span>
+            <span class="testimonial-dot" data-index="2"></span>
+            <span class="testimonial-dot" data-index="3"></span>
+            <span class="testimonial-dot" data-index="4"></span>
+          </div>
+          <button class="testimonial-next" id="testimonialNext">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+
+        <div class="add-testimonial-slider">
+          <h3>Share Your Experience</h3>
+          <p>Bought from Luxury Carpet? Share your story with others!</p>
+          <button class="btn btn-primary" id="openTestimonialForm">
+            <i class="fas fa-comment"></i> Add Your Testimonial
+          </button>
+        </div>
+      </div>
     </section>
 
     <!-- Shopping Cart Sidebar -->
     <div class="cart-sidebar" id="cartSidebar">
-        <div class="cart-header">
-            <h3><i class="fas fa-shopping-cart"></i> Shopping Cart</h3>
-            <button class="cart-close" id="cartClose">&times;</button>
+      <div class="cart-header">
+        <h3><i class="fas fa-shopping-cart"></i> Shopping Cart</h3>
+        <button class="cart-close" id="cartClose">&times;</button>
+      </div>
+
+      <div class="cart-body" id="cartBody">
+        <div class="cart-empty" id="cartEmpty">
+          <i class="fas fa-shopping-cart"></i>
+          <p>Your cart is empty</p>
+          <a href="#products" class="btn btn-secondary">Browse Products</a>
         </div>
-        
-        <div class="cart-body" id="cartBody">
-            <div class="cart-empty" id="cartEmpty">
-                <i class="fas fa-shopping-cart"></i>
-                <p>Your cart is empty</p>
-                <a href="#products" class="btn btn-secondary">Browse Products</a>
-            </div>
-            
-            <div class="cart-items" id="cartItems">
-                <!-- Cart items loaded from localStorage -->
-            </div>
+
+        <div class="cart-items" id="cartItems">
+          <!-- Cart items loaded from localStorage -->
         </div>
-        
-        <div class="cart-footer" id="cartFooter" style="display: none;">
-            <div class="cart-summary">
-                <div class="cart-total">
-                    <span>Subtotal:</span>
-                    <span class="cart-subtotal">GH₵ 0</span>
-                </div>
-                <div class="cart-total">
-                    <span>Delivery:</span>
-                    <span class="cart-delivery">GH₵ 0</span>
-                </div>
-                <div class="cart-total grand-total">
-                    <span>Total:</span>
-                    <span class="cart-grand-total">GH₵ 0</span>
-                </div>
-            </div>
-            
-            <div class="cart-actions">
-                <a href="https://wa.me/233263405722" target="_blank" class="btn btn-whatsapp checkout-btn" id="whatsappCheckout">
-                    <i class="fab fa-whatsapp"></i> Checkout on WhatsApp
-                </a>
-                <button class="btn btn-secondary clear-cart-btn" id="clearCart">
-                    <i class="fas fa-trash"></i> Clear Cart
-                </button>
-            </div>
+      </div>
+
+      <div class="cart-footer" id="cartFooter" style="display: none">
+        <div class="cart-summary">
+          <div class="cart-total">
+            <span>Subtotal:</span>
+            <span class="cart-subtotal">GH₵ 0</span>
+          </div>
+          <div class="cart-total">
+            <span>Delivery:</span>
+            <span class="cart-delivery">GH₵ 0</span>
+          </div>
+          <div class="cart-total grand-total">
+            <span>Total:</span>
+            <span class="cart-grand-total">GH₵ 0</span>
+          </div>
         </div>
+
+        <div class="cart-actions">
+          <a
+            href="https://wa.me/233263405722"
+            target="_blank"
+            class="btn btn-whatsapp checkout-btn"
+            id="whatsappCheckout"
+          >
+            <i class="fab fa-whatsapp"></i> Checkout on WhatsApp
+          </a>
+          <button class="btn btn-secondary clear-cart-btn" id="clearCart">
+            <i class="fas fa-trash"></i> Clear Cart
+          </button>
+        </div>
+      </div>
     </div>
 
     <!-- Cart Toggle Button -->
     <button class="cart-toggle" id="cartToggle">
-        <i class="fas fa-shopping-cart"></i>
-        <span class="cart-count" id="cartCount">0</span>
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-count" id="cartCount">0</span>
     </button>
 
     <!-- Testimonial Modal -->
     <div class="modal-overlay" id="testimonialModal">
-        <div class="modal-content testimonial-modal">
-            <button class="modal-close" id="testimonialModalClose">&times;</button>
-            <div class="modal-body">
-                <h3>Share Your Luxury Carpet Experience</h3>
-                <form id="testimonialForm">
-                    <div class="form-group">
-                        <label for="testimonialName">Your Name *</label>
-                        <input type="text" id="testimonialName" placeholder="Enter your name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="testimonialLocation">Your Location</label>
-                        <input type="text" id="testimonialLocation" placeholder="e.g., Accra, Kumasi">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="testimonialRating">Your Rating *</label>
-                        <div class="rating-input">
-                            <span class="star" data-value="1">☆</span>
-                            <span class="star" data-value="2">☆</span>
-                            <span class="star" data-value="3">☆</span>
-                            <span class="star" data-value="4">☆</span>
-                            <span class="star" data-value="5">☆</span>
-                        </div>
-                        <input type="hidden" id="testimonialRating" value="5" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="testimonialText">Your Testimonial *</label>
-                        <textarea id="testimonialText" rows="5" 
-                                  placeholder="Tell us about your experience with Luxury Carpet..." required></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="testimonialProduct">Product Purchased (Optional)</label>
-                        <select id="testimonialProduct">
-                            <option value="">Select a product</option>
-                            <option value="3D Geometric Carpet">3D Geometric Carpet</option>
-                            <option value="3D Wave Carpet">3D Wave Carpet</option>
-                            <option value="3D Diamond Carpet">3D Diamond Carpet</option>
-                            <option value="Fluffy White Carpet">Fluffy White Carpet</option>
-                            <option value="Fluffy Grey Carpet">Fluffy Grey Carpet</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-paper-plane"></i> Submit Testimonial
-                        </button>
-                        <button type="button" class="btn btn-secondary" id="cancelTestimonial">
-                            Cancel
-                        </button>
-                    </div>
-                </form>
+      <div class="modal-content testimonial-modal">
+        <button class="modal-close" id="testimonialModalClose">&times;</button>
+        <div class="modal-body">
+          <h3>Share Your Luxury Carpet Experience</h3>
+          <form id="testimonialForm">
+            <div class="form-group">
+              <label for="testimonialName">Your Name *</label>
+              <input
+                type="text"
+                id="testimonialName"
+                placeholder="Enter your name"
+                required
+              />
             </div>
+
+            <div class="form-group">
+              <label for="testimonialLocation">Your Location</label>
+              <input
+                type="text"
+                id="testimonialLocation"
+                placeholder="e.g., Accra, Kumasi"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="testimonialRating">Your Rating *</label>
+              <div class="rating-input">
+                <span class="star" data-value="1">☆</span>
+                <span class="star" data-value="2">☆</span>
+                <span class="star" data-value="3">☆</span>
+                <span class="star" data-value="4">☆</span>
+                <span class="star" data-value="5">☆</span>
+              </div>
+              <input type="hidden" id="testimonialRating" value="5" required />
+            </div>
+
+            <div class="form-group">
+              <label for="testimonialText">Your Testimonial *</label>
+              <textarea
+                id="testimonialText"
+                rows="5"
+                placeholder="Tell us about your experience with Luxury Carpet..."
+                required
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="testimonialProduct"
+                >Product Purchased (Optional)</label
+              >
+              <select id="testimonialProduct">
+                <option value="">Select a product</option>
+                <option value="3D Geometric Carpet">3D Geometric Carpet</option>
+                <option value="3D Wave Carpet">3D Wave Carpet</option>
+                <option value="3D Diamond Carpet">3D Diamond Carpet</option>
+                <option value="Fluffy White Carpet">Fluffy White Carpet</option>
+                <option value="Fluffy Grey Carpet">Fluffy Grey Carpet</option>
+              </select>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-paper-plane"></i> Submit Testimonial
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="cancelTestimonial"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
         </div>
+      </div>
     </div>
 
     <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/233263405722" target="_blank" class="whatsapp-float">
-        <i class="fab fa-whatsapp"></i>
-        <span class="whatsapp-text">Order Now</span>
+      <i class="fab fa-whatsapp"></i>
+      <span class="whatsapp-text"></span>
     </a>
 
     <!-- Back to Top -->
     <button class="back-to-top" id="backToTop">
-        <i class="fas fa-chevron-up"></i>
+      <i class="fas fa-chevron-up"></i>
     </button>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <div class="footer-logo">LUXURY CARPET</div>
-                    <p class="footer-description">Bringing elegance to Ghanaian homes with premium quality carpets since 2020.</p>
-                    <div class="footer-social">
-                        <a href="https://wa.me/233263405722" target="_blank" class="social-icon whatsapp">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                        <a href="#" class="social-icon instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-icon facebook">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#products"><i class="fas fa-chevron-right"></i> Products</a></li>
-                        <li><a href="#testimonials"><i class="fas fa-chevron-right"></i> Testimonials</a></li>
-                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Contact Info</h4>
-                    <ul>
-                        <li><i class="fab fa-whatsapp"></i> WhatsApp: 0263405722</li>
-                        <li><i class="fas fa-phone"></i> Phone: 0263405722</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Accra, Ghana</li>
-                        <li><i class="fas fa-envelope"></i> luxurycarpet@gmail.com</li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Business Hours</h4>
-                    <ul>
-                        <li>Monday - Friday: 8:00 AM - 6:00 PM</li>
-                        <li>Saturday: 9:00 AM - 4:00 PM</li>
-                        <li>Sunday: 10:00 AM - 2:00 PM</li>
-                        <li>24/7 WhatsApp Orders</li>
-                    </ul>
-                </div>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <div class="footer-logo">LUXURY CARPET</div>
+            <p class="footer-description">
+              Bringing elegance to Ghanaian homes with premium quality carpets
+              since 2020.
+            </p>
+            <div class="footer-social">
+              <a
+                href="https://wa.me/233263405722"
+                target="_blank"
+                class="social-icon whatsapp"
+              >
+                <i class="fab fa-whatsapp"></i>
+              </a>
+              <a href="#" class="social-icon instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="social-icon facebook">
+                <i class="fab fa-facebook"></i>
+              </a>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 Luxury Carpet. All rights reserved. | Premium Carpets for Ghanaian Homes</p>
-                <p class="footer-credits">Designed with <i class="fas fa-heart"></i> for elegant living spaces</p>
-            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+              <li>
+                <a href="#home"><i class="fas fa-chevron-right"></i> Home</a>
+              </li>
+              <li>
+                <a href="#products"
+                  ><i class="fas fa-chevron-right"></i> Products</a
+                >
+              </li>
+              <li>
+                <a href="#testimonials"
+                  ><i class="fas fa-chevron-right"></i> Testimonials</a
+                >
+              </li>
+              <li>
+                <a href="#about"
+                  ><i class="fas fa-chevron-right"></i> About Us</a
+                >
+              </li>
+              <li>
+                <a href="#contact"
+                  ><i class="fas fa-chevron-right"></i> Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Contact Info</h4>
+            <ul>
+              <li><i class="fab fa-whatsapp"></i> WhatsApp: 0263405722</li>
+              <li><i class="fas fa-phone"></i> Phone: 0263405722</li>
+              <li><i class="fas fa-map-marker-alt"></i> Accra, Ghana</li>
+              <li><i class="fas fa-envelope"></i> luxurycarpet@gmail.com</li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Business Hours</h4>
+            <ul>
+              <li>Monday - Friday: 8:00 AM - 6:00 PM</li>
+              <li>Saturday: 9:00 AM - 4:00 PM</li>
+              <li>Sunday: 10:00 AM - 2:00 PM</li>
+              <li>24/7 WhatsApp Orders</li>
+            </ul>
+          </div>
         </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2024 Luxury Carpet. All rights reserved. | Premium Carpets
+            for Ghanaian Homes
+          </p>
+          <p class="footer-credits">
+            Designed with <i class="fas fa-heart"></i> for elegant living spaces
+          </p>
+        </div>
+      </div>
     </footer>
 
     <!-- Scripts -->
     <script src="script.js"></script>
     <script>
-        // Sliding Testimonials Functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            let currentSlide = 0;
-            const totalSlides = 5;
-            const track = document.getElementById('testimonialTrack');
-            const dots = document.querySelectorAll('.testimonial-dot');
-            const prevBtn = document.getElementById('testimonialPrev');
-            const nextBtn = document.getElementById('testimonialNext');
-            
-            // Function to update slide position
-            function updateSlide() {
-                if (track) {
-                    track.style.transform = `translateX(-${currentSlide * 100}%)`;
-                }
-                
-                // Update dots
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentSlide);
-                });
-            }
-            
-            // Next slide
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                updateSlide();
-            }
-            
-            // Previous slide
-            function prevSlide() {
-                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-                updateSlide();
-            }
-            
-            // Go to specific slide
-            function goToSlide(index) {
-                currentSlide = index;
-                updateSlide();
-            }
-            
-            // Event listeners for buttons
-            if (prevBtn) {
-                prevBtn.addEventListener('click', prevSlide);
-            }
-            
-            if (nextBtn) {
-                nextBtn.addEventListener('click', nextSlide);
-            }
-            
-            // Event listeners for dots
-            dots.forEach(dot => {
-                dot.addEventListener('click', function() {
-                    const index = parseInt(this.getAttribute('data-index'));
-                    goToSlide(index);
-                });
-            });
-            
-            // Auto-slide every 5 seconds
-            let slideInterval = setInterval(nextSlide, 5000);
-            
-            // Pause auto-slide on hover
-            const slider = document.getElementById('testimonialsSlider');
-            if (slider) {
-                slider.addEventListener('mouseenter', () => {
-                    clearInterval(slideInterval);
-                });
-                
-                slider.addEventListener('mouseleave', () => {
-                    slideInterval = setInterval(nextSlide, 5000);
-                });
-            }
-            
-            // Testimonial Modal Functionality
-            const openBtn = document.getElementById('openTestimonialForm');
-            const modal = document.getElementById('testimonialModal');
-            const closeBtn = document.getElementById('testimonialModalClose');
-            const cancelBtn = document.getElementById('cancelTestimonial');
-            const form = document.getElementById('testimonialForm');
-            
-            if (openBtn) {
-                openBtn.addEventListener('click', function() {
-                    modal.style.display = 'flex';
-                });
-            }
-            
-            if (closeBtn) {
-                closeBtn.addEventListener('click', function() {
-                    modal.style.display = 'none';
-                });
-            }
-            
-            if (cancelBtn) {
-                cancelBtn.addEventListener('click', function() {
-                    modal.style.display = 'none';
-                });
-            }
-            
-            // Close modal when clicking outside
-            window.addEventListener('click', function(event) {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                }
-            });
-            
-            // Rating stars
-            const stars = document.querySelectorAll('.star');
-            const ratingInput = document.getElementById('testimonialRating');
-            
-            stars.forEach(star => {
-                star.addEventListener('click', function() {
-                    const value = this.getAttribute('data-value');
-                    ratingInput.value = value;
-                    
-                    // Update star display
-                    stars.forEach(s => {
-                        const starValue = s.getAttribute('data-value');
-                        if (starValue <= value) {
-                            s.style.color = '#FFD700';
-                            s.textContent = '★';
-                        } else {
-                            s.style.color = '#ccc';
-                            s.textContent = '☆';
-                        }
-                    });
-                });
-                
-                star.addEventListener('mouseover', function() {
-                    const value = this.getAttribute('data-value');
-                    stars.forEach(s => {
-                        const starValue = s.getAttribute('data-value');
-                        if (starValue <= value) {
-                            s.style.color = '#FFD700';
-                        }
-                    });
-                });
-                
-                star.addEventListener('mouseout', function() {
-                    const currentValue = ratingInput.value;
-                    stars.forEach(s => {
-                        const starValue = s.getAttribute('data-value');
-                        if (starValue <= currentValue) {
-                            s.style.color = '#FFD700';
-                        } else {
-                            s.style.color = '#ccc';
-                        }
-                    });
-                });
-            });
-            
-            // Form submission
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    const name = document.getElementById('testimonialName').value;
-                    const rating = ratingInput.value;
-                    const text = document.getElementById('testimonialText').value;
-                    
-                    if (name && rating && text) {
-                        alert('Thank you for your testimonial! It has been submitted.');
-                        form.reset();
-                        modal.style.display = 'none';
-                        
-                        // Reset stars
-                        stars.forEach(s => {
-                            s.style.color = '#ccc';
-                            s.textContent = '☆';
-                        });
-                        stars[4].style.color = '#FFD700';
-                        stars[4].textContent = '★';
-                        ratingInput.value = '5';
-                    } else {
-                        alert('Please fill in all required fields.');
-                    }
-                });
-            }
-            
-            // Keyboard navigation for slider
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'ArrowLeft') {
-                    prevSlide();
-                } else if (e.key === 'ArrowRight') {
-                    nextSlide();
-                }
-            });
+      // Sliding Testimonials Functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        let currentSlide = 0;
+        const totalSlides = 5;
+        const track = document.getElementById("testimonialTrack");
+        const dots = document.querySelectorAll(".testimonial-dot");
+        const prevBtn = document.getElementById("testimonialPrev");
+        const nextBtn = document.getElementById("testimonialNext");
+
+        // Function to update slide position
+        function updateSlide() {
+          if (track) {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+          }
+
+          // Update dots
+          dots.forEach((dot, index) => {
+            dot.classList.toggle("active", index === currentSlide);
+          });
+        }
+
+        // Next slide
+        function nextSlide() {
+          currentSlide = (currentSlide + 1) % totalSlides;
+          updateSlide();
+        }
+
+        // Previous slide
+        function prevSlide() {
+          currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+          updateSlide();
+        }
+
+        // Go to specific slide
+        function goToSlide(index) {
+          currentSlide = index;
+          updateSlide();
+        }
+
+        // Event listeners for buttons
+        if (prevBtn) {
+          prevBtn.addEventListener("click", prevSlide);
+        }
+
+        if (nextBtn) {
+          nextBtn.addEventListener("click", nextSlide);
+        }
+
+        // Event listeners for dots
+        dots.forEach((dot) => {
+          dot.addEventListener("click", function () {
+            const index = parseInt(this.getAttribute("data-index"));
+            goToSlide(index);
+          });
         });
+
+        // Auto-slide every 5 seconds
+        let slideInterval = setInterval(nextSlide, 5000);
+
+        // Pause auto-slide on hover
+        const slider = document.getElementById("testimonialsSlider");
+        if (slider) {
+          slider.addEventListener("mouseenter", () => {
+            clearInterval(slideInterval);
+          });
+
+          slider.addEventListener("mouseleave", () => {
+            slideInterval = setInterval(nextSlide, 5000);
+          });
+        }
+
+        // Testimonial Modal Functionality
+        const openBtn = document.getElementById("openTestimonialForm");
+        const modal = document.getElementById("testimonialModal");
+        const closeBtn = document.getElementById("testimonialModalClose");
+        const cancelBtn = document.getElementById("cancelTestimonial");
+        const form = document.getElementById("testimonialForm");
+
+        if (openBtn) {
+          openBtn.addEventListener("click", function () {
+            modal.style.display = "flex";
+          });
+        }
+
+        if (closeBtn) {
+          closeBtn.addEventListener("click", function () {
+            modal.style.display = "none";
+          });
+        }
+
+        if (cancelBtn) {
+          cancelBtn.addEventListener("click", function () {
+            modal.style.display = "none";
+          });
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener("click", function (event) {
+          if (event.target === modal) {
+            modal.style.display = "none";
+          }
+        });
+
+        // Rating stars
+        const stars = document.querySelectorAll(".star");
+        const ratingInput = document.getElementById("testimonialRating");
+
+        stars.forEach((star) => {
+          star.addEventListener("click", function () {
+            const value = this.getAttribute("data-value");
+            ratingInput.value = value;
+
+            // Update star display
+            stars.forEach((s) => {
+              const starValue = s.getAttribute("data-value");
+              if (starValue <= value) {
+                s.style.color = "#FFD700";
+                s.textContent = "★";
+              } else {
+                s.style.color = "#ccc";
+                s.textContent = "☆";
+              }
+            });
+          });
+
+          star.addEventListener("mouseover", function () {
+            const value = this.getAttribute("data-value");
+            stars.forEach((s) => {
+              const starValue = s.getAttribute("data-value");
+              if (starValue <= value) {
+                s.style.color = "#FFD700";
+              }
+            });
+          });
+
+          star.addEventListener("mouseout", function () {
+            const currentValue = ratingInput.value;
+            stars.forEach((s) => {
+              const starValue = s.getAttribute("data-value");
+              if (starValue <= currentValue) {
+                s.style.color = "#FFD700";
+              } else {
+                s.style.color = "#ccc";
+              }
+            });
+          });
+        });
+
+        // Form submission
+        if (form) {
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById("testimonialName").value;
+            const rating = ratingInput.value;
+            const text = document.getElementById("testimonialText").value;
+
+            if (name && rating && text) {
+              alert("Thank you for your testimonial! It has been submitted.");
+              form.reset();
+              modal.style.display = "none";
+
+              // Reset stars
+              stars.forEach((s) => {
+                s.style.color = "#ccc";
+                s.textContent = "☆";
+              });
+              stars[4].style.color = "#FFD700";
+              stars[4].textContent = "★";
+              ratingInput.value = "5";
+            } else {
+              alert("Please fill in all required fields.");
+            }
+          });
+        }
+
+        // Keyboard navigation for slider
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowLeft") {
+            prevSlide();
+          } else if (e.key === "ArrowRight") {
+            nextSlide();
+          }
+        });
+      });
     </script>
 
-        <!-- Full Screen Image Modal -->
+    <!-- Full Screen Image Modal -->
     <div class="fullscreen-modal" id="fullscreenModal">
-        <div class="fullscreen-content">
-            <img src="" alt="" class="fullscreen-image" id="fullscreenImage">
-            <div class="fullscreen-controls">
-                <button class="fullscreen-close" id="fullscreenClose" title="Close (Esc)">
-                    <i class="fas fa-times"></i>
-                </button>
-                <button class="fullscreen-prev" id="fullscreenPrev" title="Previous (←)">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="fullscreen-next" id="fullscreenNext" title="Next (→)">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                <button class="fullscreen-download" id="fullscreenDownload" title="Download">
-                    <i class="fas fa-download"></i>
-                </button>
-                <div class="image-counter" id="imageCounter">
-                    <span id="currentImage">1</span> / <span id="totalImages">1</span>
-                </div>
-            </div>
-            <div class="fullscreen-info">
-                <h3 id="fullscreenProductName"></h3>
-                <p id="fullscreenProductPrice"></p>
-            </div>
+      <div class="fullscreen-content">
+        <img src="" alt="" class="fullscreen-image" id="fullscreenImage" />
+        <div class="fullscreen-controls">
+          <button
+            class="fullscreen-close"
+            id="fullscreenClose"
+            title="Close (Esc)"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+          <button
+            class="fullscreen-prev"
+            id="fullscreenPrev"
+            title="Previous (←)"
+          >
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="fullscreen-next" id="fullscreenNext" title="Next (→)">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+          <button
+            class="fullscreen-download"
+            id="fullscreenDownload"
+            title="Download"
+          >
+            <i class="fas fa-download"></i>
+          </button>
+          <div class="image-counter" id="imageCounter">
+            <span id="currentImage">1</span> / <span id="totalImages">1</span>
+          </div>
         </div>
+        <div class="fullscreen-info">
+          <h3 id="fullscreenProductName"></h3>
+          <p id="fullscreenProductPrice"></p>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
