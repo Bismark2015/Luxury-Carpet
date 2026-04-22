@@ -339,7 +339,7 @@ a:hover {
 .hero {
     position: relative;
     min-height: 50vh;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('assets/images/hero-carpet.jpg');
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
     background-size: cover;
     background-position: center;
     display: flex;
@@ -1405,35 +1405,9 @@ a:hover {
     font-size: 0.85rem;
 }
 
-/* WhatsApp Float */
-.whatsapp-float {
-    position: fixed;
-    bottom: 1rem;
-    right: 1rem;
-    background: #25D366;
-    color: var(--white);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.25rem;
-    box-shadow: var(--shadow-lg);
-    transition: all var(--transition-normal);
-    z-index: 1000;
-    overflow: hidden;
-}
 
-.whatsapp-float:hover {
-    background: #1DA851;
-    transform: scale(1.1);
-    width: 50px; /* Keep round on mobile */
-}
 
-.whatsapp-text {
-    display: none; /* Hide on mobile */
-}
+
 
 /* Back to Top */
 .back-to-top {

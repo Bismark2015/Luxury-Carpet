@@ -1,5 +1,5 @@
 // ===== GLOBAL VARIABLES =====
-let productsData = [];
+let allProducts = [];
 let testimonialsData = [];
 let cart = JSON.parse(localStorage.getItem('luxuryCarpetCart')) || [];
 let currentFilter = 'all';
@@ -19,7 +19,7 @@ async function initializeApp() {
         // Load products data
         const productsResponse = await fetch('products.json');
         const productsJson = await productsResponse.json();
-        productsData = productsJson.products;
+        allProducts = productsJson.products;
         
         // Load testimonials data
         const testimonialsResponse = await fetch('testimonials.json');
@@ -81,7 +81,7 @@ function hideLoader() {
 
 // ===== SHOPPING CART FUNCTIONS =====
 function addToCart(productId) {
-    const product = productsData.find(p => p.id === productId);
+    const product = allProducts.find(p => p.id === productId);
     if (!product) return;
     
     // Check if product already in cart
@@ -321,7 +321,7 @@ function closeCart() {
 // ===== PRODUCT FUNCTIONS =====
 function loadFallbackData() {
     // Fallback product data
-    productsData = [
+    allProducts = [
         {
             id: 1,
             name: "3D Center Carpet",
@@ -462,10 +462,10 @@ function renderProducts() {
     const productsGrid = document.getElementById('productsGrid');
     const productsEmpty = document.getElementById('productsEmpty');
     
-    if (!productsGrid || !productsEmpty || productsData.length === 0) return;
+    if (!productsGrid || !productsEmpty || allProducts.length === 0) return;
     
     // Filter products
-    let filteredProducts = [...productsData];
+    let filteredProducts = [...allProducts];
     
     if (currentFilter !== 'all') {
         filteredProducts = filteredProducts.filter(product => {
@@ -611,7 +611,7 @@ function sortProducts(products, sortType) {
 }
 
 function openQuickView(productId) {
-    const product = productsData.find(p => p.id === productId);
+    const product = allProducts.find(p => p.id === productId);
     if (!product) return;
     
     const modalBody = document.getElementById('modalBody');
@@ -714,7 +714,7 @@ function closeModal() {
 
 // ===== FULL SCREEN IMAGE VIEWER FUNCTIONS =====
 function openFullscreenImage(productId, clickedImage) {
-    const product = productsData.find(p => p.id === productId);
+    const product = allProducts.find(p => p.id === productId);
     if (!product) return;
     
     const modal = document.getElementById('fullscreenModal');

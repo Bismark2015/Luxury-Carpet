@@ -1,0 +1,1024 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luxury Carpet Chatbot Widget</title>
+    <style>
+      /* ===== CHATBOT WIDGET STYLES ===== */
+      :root {
+        --chatbot-primary: #c19a6b;
+        --chatbot-primary-dark: #a57b4e;
+        --chatbot-secondary: #2c3e50;
+        --chatbot-white: #ffffff;
+        --chatbot-light: #f8f9fa;
+        --chatbot-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        --chatbot-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Chatbot Button */
+      #luxury-carpet-chatbot-btn {
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(
+          135deg,
+          var(--chatbot-primary),
+          var(--chatbot-primary-dark)
+        );
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: var(--chatbot-shadow-lg);
+        z-index: 998;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        animation: chatbot-pulse 2s infinite;
+      }
+
+      #luxury-carpet-chatbot-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 30px rgba(193, 154, 107, 0.4);
+      }
+
+      #luxury-carpet-chatbot-btn svg {
+        width: 30px;
+        height: 30px;
+        fill: white;
+      }
+
+      #luxury-carpet-chatbot-badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: #e74c3c;
+        color: white;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: bold;
+        animation: chatbot-badge-bounce 0.5s ease;
+      }
+
+      @keyframes chatbot-pulse {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(193, 154, 107, 0.7);
+        }
+        50% {
+          box-shadow: 0 0 0 10px rgba(193, 154, 107, 0);
+        }
+      }
+
+      @keyframes chatbot-badge-bounce {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+      }
+
+      /* Chatbot Window */
+      #luxury-carpet-chatbot-window {
+        position: fixed;
+        bottom: 150px;
+        right: 20px;
+        width: 380px;
+        height: 550px;
+        background: white;
+        border-radius: 16px;
+        box-shadow: var(--chatbot-shadow-lg);
+        z-index: 999;
+        display: none;
+        flex-direction: column;
+        overflow: hidden;
+        animation: chatbot-slide-up 0.3s ease;
+      }
+
+      #luxury-carpet-chatbot-window.active {
+        display: flex;
+      }
+
+      @keyframes chatbot-slide-up {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Chatbot Header */
+      #luxury-carpet-chatbot-header {
+        background: linear-gradient(
+          135deg,
+          var(--chatbot-primary),
+          var(--chatbot-primary-dark)
+        );
+        color: white;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      #luxury-carpet-chatbot-header-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      #luxury-carpet-chatbot-avatar {
+        width: 45px;
+        height: 45px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        font-weight: bold;
+        color: var(--chatbot-primary);
+      }
+
+      #luxury-carpet-chatbot-title h4 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      #luxury-carpet-chatbot-status {
+        font-size: 12px;
+        opacity: 0.9;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      #luxury-carpet-chatbot-status-dot {
+        width: 8px;
+        height: 8px;
+        background: #27ae60;
+        border-radius: 50%;
+        animation: chatbot-status-blink 1.5s infinite;
+      }
+
+      @keyframes chatbot-status-blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+
+      #luxury-carpet-chatbot-close {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        opacity: 0.8;
+        transition: opacity 0.2s;
+      }
+
+      #luxury-carpet-chatbot-close:hover {
+        opacity: 1;
+      }
+
+      /* Chatbot Messages */
+      #luxury-carpet-chatbot-messages {
+        flex: 1;
+        padding: 16px;
+        overflow-y: auto;
+        background: #f5f5f5;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .chatbot-message {
+        max-width: 80%;
+        padding: 10px 14px;
+        border-radius: 12px;
+        font-size: 14px;
+        line-height: 1.5;
+        animation: chatbot-message-fade-in 0.3s ease;
+      }
+
+      @keyframes chatbot-message-fade-in {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .chatbot-message-bot {
+        background: white;
+        color: var(--chatbot-secondary);
+        align-self: flex-start;
+        border-bottom-left-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .chatbot-message-user {
+        background: var(--chatbot-primary);
+        color: white;
+        align-self: flex-end;
+        border-bottom-right-radius: 4px;
+      }
+
+      .chatbot-typing {
+        display: flex;
+        gap: 4px;
+        padding: 10px 14px;
+        background: white;
+        border-radius: 12px;
+        align-self: flex-start;
+        width: fit-content;
+      }
+
+      .chatbot-typing-dot {
+        width: 8px;
+        height: 8px;
+        background: var(--chatbot-primary);
+        border-radius: 50%;
+        animation: chatbot-typing-animation 1.4s infinite;
+      }
+
+      .chatbot-typing-dot:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .chatbot-typing-dot:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      @keyframes chatbot-typing-animation {
+        0%,
+        60%,
+        100% {
+          transform: translateY(0);
+          opacity: 0.5;
+        }
+        30% {
+          transform: translateY(-8px);
+          opacity: 1;
+        }
+      }
+
+      /* Quick Reply Buttons */
+      .chatbot-quick-replies {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 8px;
+      }
+
+      .chatbot-quick-reply-btn {
+        background: white;
+        color: var(--chatbot-primary);
+        border: 2px solid var(--chatbot-primary);
+        padding: 8px 14px;
+        border-radius: 20px;
+        font-size: 13px;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-weight: 500;
+      }
+
+      .chatbot-quick-reply-btn:hover {
+        background: var(--chatbot-primary);
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      /* Product Cards */
+      .chatbot-product-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-top: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .chatbot-product-image {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        background: #f5f5f5;
+      }
+
+      .chatbot-product-info {
+        padding: 12px;
+      }
+
+      .chatbot-product-name {
+        font-weight: 600;
+        color: var(--chatbot-secondary);
+        margin-bottom: 4px;
+        font-size: 14px;
+      }
+
+      .chatbot-product-price {
+        color: var(--chatbot-primary);
+        font-weight: 700;
+        font-size: 16px;
+        margin-bottom: 4px;
+      }
+
+      .chatbot-product-size {
+        color: #666;
+        font-size: 12px;
+        margin-bottom: 8px;
+      }
+
+      .chatbot-product-actions {
+        display: flex;
+        gap: 8px;
+      }
+
+      .chatbot-product-btn {
+        flex: 1;
+        padding: 8px;
+        border-radius: 8px;
+        font-size: 12px;
+        cursor: pointer;
+        border: none;
+        font-weight: 600;
+        transition: all 0.2s;
+      }
+
+      .chatbot-product-btn-whatsapp {
+        background: #25d366;
+        color: white;
+      }
+
+      .chatbot-product-btn-whatsapp:hover {
+        background: #1da851;
+      }
+
+      .chatbot-product-btn-details {
+        background: var(--chatbot-primary);
+        color: white;
+      }
+
+      .chatbot-product-btn-details:hover {
+        background: var(--chatbot-primary-dark);
+      }
+
+      /* Chatbot Input */
+      #luxury-carpet-chatbot-input-container {
+        padding: 12px;
+        background: white;
+        border-top: 1px solid #e0e0e0;
+        display: flex;
+        gap: 8px;
+      }
+
+      #luxury-carpet-chatbot-input {
+        flex: 1;
+        padding: 10px 14px;
+        border: 2px solid #e0e0e0;
+        border-radius: 24px;
+        font-size: 14px;
+        outline: none;
+        transition: border-color 0.2s;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+
+      #luxury-carpet-chatbot-input:focus {
+        border-color: var(--chatbot-primary);
+      }
+
+      #luxury-carpet-chatbot-send {
+        background: var(--chatbot-primary);
+        color: white;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+      }
+
+      #luxury-carpet-chatbot-send:hover {
+        background: var(--chatbot-primary-dark);
+        transform: scale(1.05);
+      }
+
+      #luxury-carpet-chatbot-send svg {
+        width: 18px;
+        height: 18px;
+        fill: white;
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 480px) {
+        #luxury-carpet-chatbot-window {
+          bottom: 0;
+          right: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 0;
+        }
+
+        #luxury-carpet-chatbot-btn {
+          bottom: 20px;
+          right: 20px;
+        }
+      }
+
+      /* Scrollbar Styling */
+      #luxury-carpet-chatbot-messages::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      #luxury-carpet-chatbot-messages::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+
+      #luxury-carpet-chatbot-messages::-webkit-scrollbar-thumb {
+        background: var(--chatbot-primary);
+        border-radius: 3px;
+      }
+
+      #luxury-carpet-chatbot-messages::-webkit-scrollbar-thumb:hover {
+        background: var(--chatbot-primary-dark);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Chatbot Button -->
+    <button id="luxury-carpet-chatbot-btn" aria-label="Open Chat">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"
+        />
+        <path d="M7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z" />
+      </svg>
+      <span id="luxury-carpet-chatbot-badge">1</span>
+    </button>
+
+    <!-- Chatbot Window -->
+    <div id="luxury-carpet-chatbot-window">
+      <!-- Header -->
+      <div id="luxury-carpet-chatbot-header">
+        <div id="luxury-carpet-chatbot-header-info">
+          <div id="luxury-carpet-chatbot-avatar">LC</div>
+          <div id="luxury-carpet-chatbot-title">
+            <h4>Luxury Carpet</h4>
+            <div id="luxury-carpet-chatbot-status">
+              <span id="luxury-carpet-chatbot-status-dot"></span>
+              <span>Online • Accra</span>
+            </div>
+          </div>
+        </div>
+        <button id="luxury-carpet-chatbot-close" aria-label="Close Chat">
+          &times;
+        </button>
+      </div>
+
+      <!-- Messages -->
+      <div id="luxury-carpet-chatbot-messages"></div>
+
+      <!-- Input -->
+      <div id="luxury-carpet-chatbot-input-container">
+        <input
+          type="text"
+          id="luxury-carpet-chatbot-input"
+          placeholder="Type your message..."
+          autocomplete="off"
+        />
+        <button id="luxury-carpet-chatbot-send" aria-label="Send Message">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // ===== LUXURY CARPET CHATBOT ENGINE =====
+      (function () {
+        "use strict";
+
+        // Configuration
+        const CONFIG = {
+          whatsappNumber: "233263405722",
+          businessHours: {
+            start: 8,
+            end: 18,
+          },
+          deliveryAreas: {
+            accra: { time: "1 hour", fee: 0, minForFree: 1000 },
+            kumasi: { time: "Same day", fee: 50, minForFree: 1500 },
+            tema: { time: "Same day", fee: 30, minForFree: 1200 },
+            takoradi: { time: "Same day", fee: 60, minForFree: 1500 },
+            nationwide: { time: "2-3 days", fee: 100, minForFree: 2000 },
+          },
+          paymentMethods: [
+            "MTN Mobile Money",
+            "Vodafone Cash",
+            "AirtelTigo Money",
+            "Cash on Delivery",
+            "Bank Transfer",
+            "Card Payment",
+          ],
+        };
+
+        // State
+        let chatHistory = [];
+        let productsData = [];
+        let isTyping = false;
+        let conversationContext = {
+          lastIntent: null,
+          mentionedCategory: null,
+          selectedProducts: [],
+        };
+
+        // DOM Elements
+        const chatbotBtn = document.getElementById("luxury-carpet-chatbot-btn");
+        const chatbotWindow = document.getElementById(
+          "luxury-carpet-chatbot-window",
+        );
+        const chatbotClose = document.getElementById(
+          "luxury-carpet-chatbot-close",
+        );
+        const chatbotMessages = document.getElementById(
+          "luxury-carpet-chatbot-messages",
+        );
+        const chatbotInput = document.getElementById(
+          "luxury-carpet-chatbot-input",
+        );
+        const chatbotSend = document.getElementById(
+          "luxury-carpet-chatbot-send",
+        );
+        const chatbotBadge = document.getElementById(
+          "luxury-carpet-chatbot-badge",
+        );
+
+        // Initialize
+        function init() {
+          loadProducts();
+          setupEventListeners();
+          showWelcomeMessage();
+        }
+
+        // Load products from existing products.json
+        async function loadProducts() {
+          try {
+            const response = await fetch("products.json");
+            const data = await response.json();
+            productsData = data.products || [];
+            console.log("Loaded", productsData.length, "products");
+          } catch (error) {
+            console.error("Error loading products:", error);
+            productsData = [];
+          }
+        }
+
+        // Event Listeners
+        function setupEventListeners() {
+          chatbotBtn.addEventListener("click", toggleChatbot);
+          chatbotClose.addEventListener("click", closeChatbot);
+          chatbotSend.addEventListener("click", sendMessage);
+          chatbotInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") sendMessage();
+          });
+        }
+
+        // Toggle Chatbot
+        function toggleChatbot() {
+          chatbotWindow.classList.toggle("active");
+          if (chatbotWindow.classList.contains("active")) {
+            chatbotInput.focus();
+            chatbotBadge.style.display = "none";
+          }
+        }
+
+        // Close Chatbot
+        function closeChatbot() {
+          chatbotWindow.classList.remove("active");
+        }
+
+        // Show Welcome Message
+        function showWelcomeMessage() {
+          setTimeout(() => {
+            addBotMessage("Akwaaba! 🎉 Welcome to Luxury Carpet Ghana!");
+            setTimeout(() => {
+              addBotMessage(
+                "I'm here to help you find the perfect carpet for your home. How can I assist you today?",
+              );
+              showQuickReplies([
+                "🎨 Show 3D Carpets",
+                "☁️ Show Fluffy Carpets",
+                "💰 Check Prices",
+                "🚚 Delivery Info",
+                "💳 Payment Options",
+              ]);
+            }, 1000);
+          }, 500);
+        }
+
+        // Add Bot Message
+        function addBotMessage(text, delay = 0) {
+          setTimeout(() => {
+            const messageDiv = document.createElement("div");
+            messageDiv.className = "chatbot-message chatbot-message-bot";
+            messageDiv.textContent = text;
+            chatbotMessages.appendChild(messageDiv);
+            scrollToBottom();
+          }, delay);
+        }
+
+        // Add User Message
+        function addUserMessage(text) {
+          const messageDiv = document.createElement("div");
+          messageDiv.className = "chatbot-message chatbot-message-user";
+          messageDiv.textContent = text;
+          chatbotMessages.appendChild(messageDiv);
+          scrollToBottom();
+        }
+
+        // Show Typing Indicator
+        function showTyping() {
+          if (isTyping) return;
+          isTyping = true;
+
+          const typingDiv = document.createElement("div");
+          typingDiv.className = "chatbot-typing";
+          typingDiv.id = "chatbot-typing-indicator";
+          typingDiv.innerHTML = `
+                    <div class="chatbot-typing-dot"></div>
+                    <div class="chatbot-typing-dot"></div>
+                    <div class="chatbot-typing-dot"></div>
+                `;
+          chatbotMessages.appendChild(typingDiv);
+          scrollToBottom();
+        }
+
+        // Hide Typing Indicator
+        function hideTyping() {
+          isTyping = false;
+          const typingIndicator = document.getElementById(
+            "chatbot-typing-indicator",
+          );
+          if (typingIndicator) {
+            typingIndicator.remove();
+          }
+        }
+
+        // Show Quick Replies
+        function showQuickReplies(replies) {
+          const quickRepliesDiv = document.createElement("div");
+          quickRepliesDiv.className = "chatbot-quick-replies";
+
+          replies.forEach((reply) => {
+            const button = document.createElement("button");
+            button.className = "chatbot-quick-reply-btn";
+            button.textContent = reply;
+            button.addEventListener("click", () => {
+              handleQuickReply(reply);
+            });
+            quickRepliesDiv.appendChild(button);
+          });
+
+          chatbotMessages.appendChild(quickRepliesDiv);
+          scrollToBottom();
+        }
+
+        // Handle Quick Reply Click
+        function handleQuickReply(reply) {
+          addUserMessage(reply);
+          processMessage(reply);
+        }
+
+        // Send Message
+        function sendMessage() {
+          const message = chatbotInput.value.trim();
+          if (!message) return;
+
+          addUserMessage(message);
+          chatbotInput.value = "";
+
+          processMessage(message);
+        }
+
+        // Process Message with NLP
+        function processMessage(message) {
+          showTyping();
+
+          // Simulate processing delay
+          setTimeout(() => {
+            hideTyping();
+
+            const intent = detectIntent(message);
+            const response = generateResponse(intent, message);
+
+            addBotMessage(response.text);
+
+            if (response.products) {
+              displayProducts(response.products);
+            }
+
+            if (response.quickReplies) {
+              showQuickReplies(response.quickReplies);
+            }
+
+            if (response.whatsapp) {
+              setTimeout(() => {
+                const whatsappBtn = createWhatsAppButton(response.whatsapp);
+                chatbotMessages.appendChild(whatsappBtn);
+                scrollToBottom();
+              }, 500);
+            }
+          }, 800);
+        }
+
+        // Detect Intent using Pattern Matching
+        function detectIntent(message) {
+          const msg = message.toLowerCase();
+
+          // Greetings
+          if (
+            /^(hi|hello|hey|akwaaba|good morning|good afternoon|good evening)/i.test(
+              msg,
+            )
+          ) {
+            return "greeting";
+          }
+
+          // Product Categories
+          if (/3d|three.?d|dimension/i.test(msg)) {
+            conversationContext.mentionedCategory = "3d";
+            return "show_3d_carpets";
+          }
+
+          if (/fluffy|soft|cloud|plush/i.test(msg)) {
+            conversationContext.mentionedCategory = "fluffy";
+            return "show_fluffy_carpets";
+          }
+
+          // Pricing
+          if (/(price|cost|how much|affordable|cheap|expensive)/i.test(msg)) {
+            return "pricing";
+          }
+
+          // Sizes
+          if (
+            /(size|dimension|small|medium|large|140|160|200|230|300)/i.test(msg)
+          ) {
+            return "sizes";
+          }
+
+          // Delivery
+          if (
+            /(deliver|delivery|ship|shipping|arrive|fast|when|how long)/i.test(
+              msg,
+            )
+          ) {
+            return "delivery";
+          }
+
+          // Payment
+          if (/(pay|payment|momo|mobile money|cash|card|bank)/i.test(msg)) {
+            return "payment";
+          }
+
+          // Location/Areas
+          if (
+            /(accra|kumasi|tema|takoradi|cape coast|location|area)/i.test(msg)
+          ) {
+            return "location";
+          }
+
+          // Quality/Material
+          if (/(quality|material|durable|last|warranty|guarantee)/i.test(msg)) {
+            return "quality";
+          }
+
+          // Order/Buy
+          if (/(order|buy|purchase|want|interested|get)/i.test(msg)) {
+            return "order";
+          }
+
+          // Help
+          if (/(help|assist|support|question)/i.test(msg)) {
+            return "help";
+          }
+
+          // Default
+          return "general";
+        }
+
+        // Generate Response
+        function generateResponse(intent, message) {
+          const responses = {
+            greeting: {
+              text: "Hello! 👋 Welcome to Luxury Carpet! I'm excited to help you find the perfect carpet. What are you looking for today?",
+              quickReplies: [
+                "🎨 3D Carpets",
+                "☁️ Fluffy Carpets",
+                "💰 Prices",
+                "🚚 Delivery",
+              ],
+            },
+
+            show_3d_carpets: {
+              text: "🎨 Our 3D carpets are stunning! They add amazing depth and visual appeal to any room. Check out these popular options:",
+              products: productsData
+                .filter((p) => p.category === "3d")
+                .slice(0, 3),
+              quickReplies: [
+                "Show more 3D",
+                "Fluffy carpets instead",
+                "Price range?",
+              ],
+            },
+
+            show_fluffy_carpets: {
+              text: "☁️ Our fluffy carpets are incredibly soft! Perfect for bedrooms and living rooms. Here are some favorites:",
+              products: productsData
+                .filter((p) => p.category === "fluffy")
+                .slice(0, 3),
+              quickReplies: [
+                "Show more Fluffy",
+                "3D carpets instead",
+                "Delivery info?",
+              ],
+            },
+
+            pricing: {
+              text: "💰 Our prices are very competitive!\n\n📏 Small (140x200cm): GH₵ 320-380\n📏 Medium (160x230cm): GH₵ 380-450\n📏 Large (200x300cm): GH₵ 550-580\n\nAll carpets come with 1-year quality guarantee! 🛡️",
+              quickReplies: [
+                "Show 3D carpets",
+                "Show Fluffy carpets",
+                "Delivery cost?",
+              ],
+            },
+
+            sizes: {
+              text: "📏 We have 3 standard sizes:\n\n✓ Small: 140x200cm (Perfect for bedrooms)\n✓ Medium: 160x230cm (Great for living rooms)\n✓ Large: 200x300cm (Spacious areas)\n\nWhich size interests you?",
+              quickReplies: [
+                "Small carpets",
+                "Medium carpets",
+                "Large carpets",
+              ],
+            },
+
+            delivery: {
+              text: "🚚 Fast Delivery Across Ghana!\n\n✓ Accra: 1 hour (FREE over GH₵1000)\n✓ Kumasi/Tema/Takoradi: Same day\n✓ Nationwide: 2-3 days\n\nWhere should we deliver?",
+              quickReplies: ["Accra", "Kumasi", "Other location", "Order now"],
+            },
+
+            payment: {
+              text: "💳 We accept multiple payment methods:\n\n✓ MTN Mobile Money\n✓ Vodafone Cash\n✓ AirtelTigo Money\n✓ Cash on Delivery\n✓ Bank Transfer\n✓ Card Payment\n\nAll payments are secure! 🔒",
+              quickReplies: [
+                "Order via WhatsApp",
+                "See products",
+                "Ask question",
+              ],
+            },
+
+            location: {
+              text: "📍 We serve all of Ghana!\n\nFastest delivery in:\n• Accra (1 hour)\n• Kumasi (Same day)\n• Tema (Same day)\n• Takoradi (Same day)\n\nNationwide delivery available in 2-3 days!",
+              quickReplies: ["Delivery cost?", "See products", "Order now"],
+            },
+
+            quality: {
+              text: "🛡️ Premium Quality Guaranteed!\n\n✓ 1-year quality warranty\n✓ Durable materials\n✓ Easy to clean\n✓ Fade resistant\n✓ 7-day return policy\n\nYour satisfaction is our priority!",
+              quickReplies: ["Show products", "Prices?", "Order now"],
+            },
+
+            order: {
+              text: "🛒 Ready to order? Great!\n\nEasiest way:\n1️⃣ Browse our carpets\n2️⃣ Pick your favorite\n3️⃣ Message us on WhatsApp\n4️⃣ We confirm & deliver!\n\nWhat type interests you?",
+              quickReplies: [
+                "3D Carpets",
+                "Fluffy Carpets",
+                "Chat on WhatsApp",
+              ],
+              whatsapp:
+                "Hi Luxury Carpet! I want to order a carpet. Can you help me?",
+            },
+
+            help: {
+              text: "🤝 I'm here to help!\n\nI can assist with:\n✓ Product recommendations\n✓ Pricing information\n✓ Delivery details\n✓ Payment options\n✓ Order placement\n\nWhat do you need?",
+              quickReplies: ["See products", "Prices", "Delivery", "Payment"],
+            },
+
+            general: {
+              text: "I can help you with:\n\n✓ Finding the perfect carpet\n✓ Checking prices & sizes\n✓ Delivery information\n✓ Payment methods\n✓ Placing orders\n\nWhat would you like to know?",
+              quickReplies: [
+                "Show carpets",
+                "Prices",
+                "Delivery info",
+                "Order now",
+              ],
+            },
+          };
+
+          return responses[intent] || responses.general;
+        }
+
+        // Display Products
+        function displayProducts(products) {
+          if (!products || products.length === 0) {
+            addBotMessage("Sorry, no products found matching your criteria.");
+            return;
+          }
+
+          products.forEach((product, index) => {
+            setTimeout(() => {
+              const productCard = createProductCard(product);
+              chatbotMessages.appendChild(productCard);
+              scrollToBottom();
+            }, index * 300);
+          });
+        }
+
+        // Create Product Card
+        function createProductCard(product) {
+          const card = document.createElement("div");
+          card.className = "chatbot-product-card";
+
+          const whatsappMsg = `Hi Luxury Carpet! I'm interested in ${product.name} (${product.size}) - GH₵ ${product.price}`;
+
+          card.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" class="chatbot-product-image" onerror="this.src='assets/images/placeholder.jpg'">
+                    <div class="chatbot-product-info">
+                        <div class="chatbot-product-name">${product.name}</div>
+                        <div class="chatbot-product-price">GH₵ ${product.price}</div>
+                        <div class="chatbot-product-size">Size: ${product.size}</div>
+                        <div class="chatbot-product-actions">
+                            <button class="chatbot-product-btn chatbot-product-btn-whatsapp" onclick="window.open('https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(whatsappMsg)}', '_blank')">
+                                📱 WhatsApp
+                            </button>
+                            <button class="chatbot-product-btn chatbot-product-btn-details" onclick="alert('Product: ${product.name}\\nPrice: GH₵ ${product.price}\\nSize: ${product.size}\\n\\n${product.description}')">
+                                ℹ️ Details
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+          return card;
+        }
+
+        // Create WhatsApp Button
+        function createWhatsAppButton(message) {
+          const div = document.createElement("div");
+          div.style.textAlign = "center";
+          div.style.margin = "10px 0";
+
+          const button = document.createElement("button");
+          button.className = "chatbot-product-btn chatbot-product-btn-whatsapp";
+          button.style.width = "100%";
+          button.textContent = "💬 Continue on WhatsApp";
+          button.onclick = () => {
+            window.open(
+              `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`,
+              "_blank",
+            );
+          };
+
+          div.appendChild(button);
+          return div;
+        }
+
+        // Scroll to Bottom
+        function scrollToBottom() {
+          chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        // Initialize when DOM is ready
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", init);
+        } else {
+          init();
+        }
+      })();
+    </script>
+  </body>
+</html>

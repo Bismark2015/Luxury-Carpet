@@ -17,11 +17,13 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <link rel="stylesheet" href="chatbot.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap"
       rel="stylesheet"
     />
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
+
     <style>
       /* Sliding Testimonials Styles */
       .testimonials-slider-section {
@@ -60,6 +62,7 @@
         margin: 0 auto;
         position: relative;
         border-left: 5px solid #667eea;
+        animation: fadeIn 0.5s ease-out;
       }
 
       .testimonial-rating {
@@ -128,7 +131,6 @@
         font-weight: 500;
       }
 
-      /* Slider Controls */
       .testimonial-controls {
         display: flex;
         justify-content: center;
@@ -181,7 +183,6 @@
         transform: scale(1.3);
       }
 
-      /* Add Testimonial */
       .add-testimonial-slider {
         text-align: center;
         margin-top: 60px;
@@ -203,7 +204,6 @@
         font-size: 16px;
       }
 
-      /* Slider Animation */
       @keyframes fadeIn {
         from {
           opacity: 0;
@@ -213,10 +213,6 @@
           opacity: 1;
           transform: translateY(0);
         }
-      }
-
-      .testimonial-card-slider {
-        animation: fadeIn 0.5s ease-out;
       }
     </style>
   </head>
@@ -240,18 +236,18 @@
         </div>
 
         <div class="nav-menu" id="navMenu">
-          <a href="#home" class="nav-link active">
-            <i class="fas fa-home"></i> Home
-          </a>
-          <a href="#products" class="nav-link">
-            <i class="fas fa-th-large"></i> Products
-          </a>
-          <a href="#about" class="nav-link">
-            <i class="fas fa-info-circle"></i> About
-          </a>
-          <a href="#contact" class="nav-link">
-            <i class="fas fa-envelope"></i> Contact
-          </a>
+          <a href="#home" class="nav-link active"
+            ><i class="fas fa-home"></i> Home</a
+          >
+          <a href="#products" class="nav-link"
+            ><i class="fas fa-th-large"></i> Products</a
+          >
+          <a href="#about" class="nav-link"
+            ><i class="fas fa-info-circle"></i> About</a
+          >
+          <a href="#contact" class="nav-link"
+            ><i class="fas fa-envelope"></i> Contact</a
+          >
           <div class="whatsapp-mobile">
             <a
               href="https://wa.me/233263405722"
@@ -337,9 +333,7 @@
           <h3>Browse Our Collections</h3>
           <p>Find the perfect carpet for your space</p>
         </div>
-        <div class="filter-buttons" id="filterButtons">
-          <!-- Filters loaded from JavaScript -->
-        </div>
+        <div class="filter-buttons" id="filterButtons"></div>
       </div>
     </section>
 
@@ -352,7 +346,6 @@
             Handpicked carpets that transform spaces
           </p>
         </div>
-
         <div class="products-controls">
           <div class="products-count">
             Showing <span id="productsCount">40</span> premium carpets
@@ -367,11 +360,7 @@
             </select>
           </div>
         </div>
-
-        <div class="products-grid" id="productsGrid">
-          <!-- Products loaded from JavaScript -->
-        </div>
-
+        <div class="products-grid" id="productsGrid"></div>
         <div class="products-empty" id="productsEmpty" style="display: none">
           <i class="fas fa-search"></i>
           <h3>No carpets found</h3>
@@ -387,9 +376,7 @@
     <div class="modal-overlay" id="quickViewModal">
       <div class="modal-content">
         <button class="modal-close" id="modalClose">&times;</button>
-        <div class="modal-body" id="modalBody">
-          <!-- Modal content loaded here -->
-        </div>
+        <div class="modal-body" id="modalBody"></div>
       </div>
     </div>
 
@@ -398,42 +385,31 @@
       <div class="container">
         <div class="features-grid">
           <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-truck"></i>
-            </div>
+            <div class="feature-icon"><i class="fas fa-truck"></i></div>
             <h3>Fast Delivery</h3>
             <p>
               We deliver to all areas in Accra within 1 hour. Nationwide
               delivery available.
             </p>
           </div>
-
           <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-shield-alt"></i>
-            </div>
+            <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
             <h3>Quality Guarantee</h3>
             <p>
               All our carpets are made from premium materials with 1-year
               quality guarantee.
             </p>
           </div>
-
           <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-credit-card"></i>
-            </div>
+            <div class="feature-icon"><i class="fas fa-credit-card"></i></div>
             <h3>Easy Payment</h3>
             <p>
               Pay with Mobile Money, Cash, or Bank Transfer. Secure and
               convenient.
             </p>
           </div>
-
           <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-undo"></i>
-            </div>
+            <div class="feature-icon"><i class="fas fa-undo"></i></div>
             <h3>Easy Returns</h3>
             <p>
               Not satisfied? Return within 7 days for a full refund or exchange.
@@ -458,7 +434,6 @@
 
         <div class="testimonials-slider" id="testimonialsSlider">
           <div class="testimonials-track" id="testimonialTrack">
-            <!-- Slide 1 -->
             <div class="testimonial-slide">
               <div class="testimonial-card-slider">
                 <div class="testimonial-rating">★★★★★</div>
@@ -482,8 +457,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- Slide 2 -->
             <div class="testimonial-slide">
               <div class="testimonial-card-slider">
                 <div class="testimonial-rating">★★★★★</div>
@@ -506,8 +479,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- Slide 3 -->
             <div class="testimonial-slide">
               <div class="testimonial-card-slider">
                 <div class="testimonial-rating">★★★★☆</div>
@@ -530,8 +501,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- Slide 4 -->
             <div class="testimonial-slide">
               <div class="testimonial-card-slider">
                 <div class="testimonial-rating">★★★★★</div>
@@ -554,8 +523,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- Slide 5 -->
             <div class="testimonial-slide">
               <div class="testimonial-card-slider">
                 <div class="testimonial-rating">★★★★★</div>
@@ -613,35 +580,26 @@
         <h3><i class="fas fa-shopping-cart"></i> Shopping Cart</h3>
         <button class="cart-close" id="cartClose">&times;</button>
       </div>
-
       <div class="cart-body" id="cartBody">
         <div class="cart-empty" id="cartEmpty">
           <i class="fas fa-shopping-cart"></i>
           <p>Your cart is empty</p>
           <a href="#products" class="btn btn-secondary">Browse Products</a>
         </div>
-
-        <div class="cart-items" id="cartItems">
-          <!-- Cart items loaded from localStorage -->
-        </div>
+        <div class="cart-items" id="cartItems"></div>
       </div>
-
       <div class="cart-footer" id="cartFooter" style="display: none">
         <div class="cart-summary">
           <div class="cart-total">
-            <span>Subtotal:</span>
-            <span class="cart-subtotal">GH₵ 0</span>
+            <span>Subtotal:</span><span class="cart-subtotal">GH₵ 0</span>
           </div>
           <div class="cart-total">
-            <span>Delivery:</span>
-            <span class="cart-delivery">GH₵ 0</span>
+            <span>Delivery:</span><span class="cart-delivery">GH₵ 0</span>
           </div>
           <div class="cart-total grand-total">
-            <span>Total:</span>
-            <span class="cart-grand-total">GH₵ 0</span>
+            <span>Total:</span><span class="cart-grand-total">GH₵ 0</span>
           </div>
         </div>
-
         <div class="cart-actions">
           <a
             href="https://wa.me/233263405722"
@@ -680,7 +638,6 @@
                 required
               />
             </div>
-
             <div class="form-group">
               <label for="testimonialLocation">Your Location</label>
               <input
@@ -689,7 +646,6 @@
                 placeholder="e.g., Accra, Kumasi"
               />
             </div>
-
             <div class="form-group">
               <label for="testimonialRating">Your Rating *</label>
               <div class="rating-input">
@@ -701,7 +657,6 @@
               </div>
               <input type="hidden" id="testimonialRating" value="5" required />
             </div>
-
             <div class="form-group">
               <label for="testimonialText">Your Testimonial *</label>
               <textarea
@@ -711,7 +666,6 @@
                 required
               ></textarea>
             </div>
-
             <div class="form-group">
               <label for="testimonialProduct"
                 >Product Purchased (Optional)</label
@@ -725,7 +679,6 @@
                 <option value="Fluffy Grey Carpet">Fluffy Grey Carpet</option>
               </select>
             </div>
-
             <div class="form-actions">
               <button type="submit" class="btn btn-primary">
                 <i class="fas fa-paper-plane"></i> Submit Testimonial
@@ -742,12 +695,6 @@
         </div>
       </div>
     </div>
-
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/233263405722" target="_blank" class="whatsapp-float">
-      <i class="fab fa-whatsapp"></i>
-      <span class="whatsapp-text"></span>
-    </a>
 
     <!-- Back to Top -->
     <button class="back-to-top" id="backToTop">
@@ -769,18 +716,16 @@
                 href="https://wa.me/233263405722"
                 target="_blank"
                 class="social-icon whatsapp"
-              >
-                <i class="fab fa-whatsapp"></i>
-              </a>
-              <a href="#" class="social-icon instagram">
-                <i class="fab fa-instagram"></i>
-              </a>
-              <a href="#" class="social-icon facebook">
-                <i class="fab fa-facebook"></i>
-              </a>
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+              <a href="#" class="social-icon instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="social-icon facebook"
+                ><i class="fab fa-facebook"></i
+              ></a>
             </div>
           </div>
-
           <div class="footer-col">
             <h4>Quick Links</h4>
             <ul>
@@ -809,7 +754,6 @@
               </li>
             </ul>
           </div>
-
           <div class="footer-col">
             <h4>Contact Info</h4>
             <ul>
@@ -819,7 +763,6 @@
               <li><i class="fas fa-envelope"></i> luxurycarpet@gmail.com</li>
             </ul>
           </div>
-
           <div class="footer-col">
             <h4>Business Hours</h4>
             <ul>
@@ -830,7 +773,6 @@
             </ul>
           </div>
         </div>
-
         <div class="footer-bottom">
           <p>
             &copy; 2024 Luxury Carpet. All rights reserved. | Premium Carpets
@@ -842,196 +784,6 @@
         </div>
       </div>
     </footer>
-
-    <!-- Scripts -->
-    <script src="script.js"></script>
-    <script>
-      // Sliding Testimonials Functionality
-      document.addEventListener("DOMContentLoaded", function () {
-        let currentSlide = 0;
-        const totalSlides = 5;
-        const track = document.getElementById("testimonialTrack");
-        const dots = document.querySelectorAll(".testimonial-dot");
-        const prevBtn = document.getElementById("testimonialPrev");
-        const nextBtn = document.getElementById("testimonialNext");
-
-        // Function to update slide position
-        function updateSlide() {
-          if (track) {
-            track.style.transform = `translateX(-${currentSlide * 100}%)`;
-          }
-
-          // Update dots
-          dots.forEach((dot, index) => {
-            dot.classList.toggle("active", index === currentSlide);
-          });
-        }
-
-        // Next slide
-        function nextSlide() {
-          currentSlide = (currentSlide + 1) % totalSlides;
-          updateSlide();
-        }
-
-        // Previous slide
-        function prevSlide() {
-          currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-          updateSlide();
-        }
-
-        // Go to specific slide
-        function goToSlide(index) {
-          currentSlide = index;
-          updateSlide();
-        }
-
-        // Event listeners for buttons
-        if (prevBtn) {
-          prevBtn.addEventListener("click", prevSlide);
-        }
-
-        if (nextBtn) {
-          nextBtn.addEventListener("click", nextSlide);
-        }
-
-        // Event listeners for dots
-        dots.forEach((dot) => {
-          dot.addEventListener("click", function () {
-            const index = parseInt(this.getAttribute("data-index"));
-            goToSlide(index);
-          });
-        });
-
-        // Auto-slide every 5 seconds
-        let slideInterval = setInterval(nextSlide, 5000);
-
-        // Pause auto-slide on hover
-        const slider = document.getElementById("testimonialsSlider");
-        if (slider) {
-          slider.addEventListener("mouseenter", () => {
-            clearInterval(slideInterval);
-          });
-
-          slider.addEventListener("mouseleave", () => {
-            slideInterval = setInterval(nextSlide, 5000);
-          });
-        }
-
-        // Testimonial Modal Functionality
-        const openBtn = document.getElementById("openTestimonialForm");
-        const modal = document.getElementById("testimonialModal");
-        const closeBtn = document.getElementById("testimonialModalClose");
-        const cancelBtn = document.getElementById("cancelTestimonial");
-        const form = document.getElementById("testimonialForm");
-
-        if (openBtn) {
-          openBtn.addEventListener("click", function () {
-            modal.style.display = "flex";
-          });
-        }
-
-        if (closeBtn) {
-          closeBtn.addEventListener("click", function () {
-            modal.style.display = "none";
-          });
-        }
-
-        if (cancelBtn) {
-          cancelBtn.addEventListener("click", function () {
-            modal.style.display = "none";
-          });
-        }
-
-        // Close modal when clicking outside
-        window.addEventListener("click", function (event) {
-          if (event.target === modal) {
-            modal.style.display = "none";
-          }
-        });
-
-        // Rating stars
-        const stars = document.querySelectorAll(".star");
-        const ratingInput = document.getElementById("testimonialRating");
-
-        stars.forEach((star) => {
-          star.addEventListener("click", function () {
-            const value = this.getAttribute("data-value");
-            ratingInput.value = value;
-
-            // Update star display
-            stars.forEach((s) => {
-              const starValue = s.getAttribute("data-value");
-              if (starValue <= value) {
-                s.style.color = "#FFD700";
-                s.textContent = "★";
-              } else {
-                s.style.color = "#ccc";
-                s.textContent = "☆";
-              }
-            });
-          });
-
-          star.addEventListener("mouseover", function () {
-            const value = this.getAttribute("data-value");
-            stars.forEach((s) => {
-              const starValue = s.getAttribute("data-value");
-              if (starValue <= value) {
-                s.style.color = "#FFD700";
-              }
-            });
-          });
-
-          star.addEventListener("mouseout", function () {
-            const currentValue = ratingInput.value;
-            stars.forEach((s) => {
-              const starValue = s.getAttribute("data-value");
-              if (starValue <= currentValue) {
-                s.style.color = "#FFD700";
-              } else {
-                s.style.color = "#ccc";
-              }
-            });
-          });
-        });
-
-        // Form submission
-        if (form) {
-          form.addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            const name = document.getElementById("testimonialName").value;
-            const rating = ratingInput.value;
-            const text = document.getElementById("testimonialText").value;
-
-            if (name && rating && text) {
-              alert("Thank you for your testimonial! It has been submitted.");
-              form.reset();
-              modal.style.display = "none";
-
-              // Reset stars
-              stars.forEach((s) => {
-                s.style.color = "#ccc";
-                s.textContent = "☆";
-              });
-              stars[4].style.color = "#FFD700";
-              stars[4].textContent = "★";
-              ratingInput.value = "5";
-            } else {
-              alert("Please fill in all required fields.");
-            }
-          });
-        }
-
-        // Keyboard navigation for slider
-        document.addEventListener("keydown", function (e) {
-          if (e.key === "ArrowLeft") {
-            prevSlide();
-          } else if (e.key === "ArrowRight") {
-            nextSlide();
-          }
-        });
-      });
-    </script>
 
     <!-- Full Screen Image Modal -->
     <div class="fullscreen-modal" id="fullscreenModal">
@@ -1072,5 +824,192 @@
         </div>
       </div>
     </div>
+
+    <!-- ===== CHATBOT WIDGET ===== -->
+    <!-- Chatbot Button -->
+    <button id="luxury-carpet-chatbot-btn" aria-label="Open Chat">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"
+        />
+        <path d="M7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z" />
+      </svg>
+      <span id="luxury-carpet-chatbot-badge">1</span>
+    </button>
+
+    <!-- Chatbot Window -->
+    <div id="luxury-carpet-chatbot-window">
+      <div id="luxury-carpet-chatbot-header">
+        <div id="luxury-carpet-chatbot-header-info">
+          <div id="luxury-carpet-chatbot-avatar">LC</div>
+          <div id="luxury-carpet-chatbot-title">
+            <h4>Luxury Carpet</h4>
+            <div id="luxury-carpet-chatbot-status">
+              <span id="luxury-carpet-chatbot-status-dot"></span>
+              <span>Online • Accra</span>
+            </div>
+          </div>
+        </div>
+        <button id="luxury-carpet-chatbot-close" aria-label="Close Chat">
+          &times;
+        </button>
+      </div>
+      <div id="luxury-carpet-chatbot-messages"></div>
+      <div id="luxury-carpet-chatbot-input-container">
+        <input
+          type="text"
+          id="luxury-carpet-chatbot-input"
+          placeholder="Type your message..."
+          autocomplete="off"
+        />
+        <button id="luxury-carpet-chatbot-send" aria-label="Send Message">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- ===== END CHATBOT WIDGET ===== -->
+
+    <!-- Scripts — order matters: main script first, then chatbot, then inline -->
+    <script src="script.js"></script>
+    <script src="chatbot.js"></script>
+    <script>
+      // Sliding Testimonials Functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        let currentSlide = 0;
+        const totalSlides = 5;
+        const track = document.getElementById("testimonialTrack");
+        const dots = document.querySelectorAll(".testimonial-dot");
+        const prevBtn = document.getElementById("testimonialPrev");
+        const nextBtn = document.getElementById("testimonialNext");
+
+        function updateSlide() {
+          if (track)
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+          dots.forEach((dot, index) =>
+            dot.classList.toggle("active", index === currentSlide),
+          );
+        }
+
+        function nextSlide() {
+          currentSlide = (currentSlide + 1) % totalSlides;
+          updateSlide();
+        }
+        function prevSlide() {
+          currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+          updateSlide();
+        }
+        function goToSlide(index) {
+          currentSlide = index;
+          updateSlide();
+        }
+
+        if (prevBtn) prevBtn.addEventListener("click", prevSlide);
+        if (nextBtn) nextBtn.addEventListener("click", nextSlide);
+        dots.forEach((dot) =>
+          dot.addEventListener("click", function () {
+            goToSlide(parseInt(this.getAttribute("data-index")));
+          }),
+        );
+
+        let slideInterval = setInterval(nextSlide, 5000);
+        const slider = document.getElementById("testimonialsSlider");
+        if (slider) {
+          slider.addEventListener("mouseenter", () =>
+            clearInterval(slideInterval),
+          );
+          slider.addEventListener("mouseleave", () => {
+            slideInterval = setInterval(nextSlide, 5000);
+          });
+        }
+
+        // Testimonial Modal
+        const openBtn = document.getElementById("openTestimonialForm");
+        const modal = document.getElementById("testimonialModal");
+        const closeBtn = document.getElementById("testimonialModalClose");
+        const cancelBtn = document.getElementById("cancelTestimonial");
+        const form = document.getElementById("testimonialForm");
+
+        if (openBtn)
+          openBtn.addEventListener(
+            "click",
+            () => (modal.style.display = "flex"),
+          );
+        if (closeBtn)
+          closeBtn.addEventListener(
+            "click",
+            () => (modal.style.display = "none"),
+          );
+        if (cancelBtn)
+          cancelBtn.addEventListener(
+            "click",
+            () => (modal.style.display = "none"),
+          );
+        window.addEventListener("click", (e) => {
+          if (e.target === modal) modal.style.display = "none";
+        });
+
+        // Rating stars
+        const stars = document.querySelectorAll(".star");
+        const ratingInput = document.getElementById("testimonialRating");
+
+        stars.forEach((star) => {
+          star.addEventListener("click", function () {
+            const value = this.getAttribute("data-value");
+            ratingInput.value = value;
+            stars.forEach((s) => {
+              s.style.color =
+                s.getAttribute("data-value") <= value ? "#FFD700" : "#ccc";
+              s.textContent = s.getAttribute("data-value") <= value ? "★" : "☆";
+            });
+          });
+          star.addEventListener("mouseover", function () {
+            const value = this.getAttribute("data-value");
+            stars.forEach((s) => {
+              if (s.getAttribute("data-value") <= value)
+                s.style.color = "#FFD700";
+            });
+          });
+          star.addEventListener("mouseout", function () {
+            const current = ratingInput.value;
+            stars.forEach((s) => {
+              s.style.color =
+                s.getAttribute("data-value") <= current ? "#FFD700" : "#ccc";
+            });
+          });
+        });
+
+        if (form) {
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const name = document.getElementById("testimonialName").value;
+            const rating = ratingInput.value;
+            const text = document.getElementById("testimonialText").value;
+            if (name && rating && text) {
+              alert("Thank you for your testimonial! It has been submitted.");
+              form.reset();
+              modal.style.display = "none";
+              stars.forEach((s) => {
+                s.style.color = "#ccc";
+                s.textContent = "☆";
+              });
+              stars[4].style.color = "#FFD700";
+              stars[4].textContent = "★";
+              ratingInput.value = "5";
+            } else {
+              alert("Please fill in all required fields.");
+            }
+          });
+        }
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowLeft") prevSlide();
+          else if (e.key === "ArrowRight") nextSlide();
+        });
+      });
+    </script>
+
+    <!-- ← loads after DOM is ready -->
   </body>
 </html>
